@@ -50,90 +50,90 @@ const DisplayCard = ({selectedApplication}) => {
                     
 
                         ))} */}
-        <div class="max-w-xl mx-auto my-10 border-b-2 pb-4">
-          <div class="flex pb-3 ">
-            <div class="flex-1">
+        <div className="max-w-xl mx-auto my-10 border-b-2 pb-4">
+          <div className="flex pb-3 ">
+            <div className="flex-1">
             </div>
             
             
                        
             
     {/* Legal*/}
-            <div class="flex-1">
-              <div class={selectedApplication.applicationStatus.legal =="done" ? `w-10 h-10 bg-green-600 status-circle mx-auto rounded-full text-lg text-white flex items-center` 
+            <div className="flex-1">
+              <div className={selectedApplication.applicationStatus.legal =="done" ? `w-10 h-10 bg-green-600 status-circle mx-auto rounded-full text-lg text-white flex items-center` 
               : selectedApplication.applicationStatus.legal == "pending" ? `w-10 h-10 bg-yellow-500 status-circle mx-auto rounded-full text-lg text-white flex items-center` : `w-10 h-10 bg-red-500 status-circle mx-auto rounded-full text-lg text-black flex items-center` }>
-                <span class="text-white text-center w-full"><i class="fa fa-check w-full fill-current white"></i>1</span>
+                <span className="text-white text-center w-full"><i className="fa fa-check w-full fill-current white"></i>1</span>
               </div>
             </div>
 
 
-            <div class="w-1/6 align-center items-center align-middle content-center flex">
-              <div class="w-full bg-gray-300 rounded items-center align-middle align-center flex-1">
-                <div class={selectedApplication.applicationStatus.legal == "done" ? `bg-green-400 text-xs leading-none py-1 text-center text-grey-darkest rounded` : 
+            <div className="w-1/6 align-center items-center align-middle content-center flex">
+              <div className="w-full bg-gray-300 rounded items-center align-middle align-center flex-1">
+                <div className={selectedApplication.applicationStatus.legal == "done" ? `bg-green-400 text-xs leading-none py-1 text-center text-grey-darkest rounded` : 
             `text-xs leading-none py-1 text-center text-grey-darkest rounded`} style={{width:"100%"}}></div>
               </div>
             </div>
 
     {/* Marketing */}
-            <div class="flex-1">
-              <div class={selectedApplication.applicationStatus.marketing =="done" ? `w-10 h-10 bg-green-600 status-circle mx-auto rounded-full text-lg text-white flex items-center` 
+            <div className="flex-1">
+              <div className={selectedApplication.applicationStatus.marketing =="done" ? `w-10 h-10 bg-green-600 status-circle mx-auto rounded-full text-lg text-white flex items-center` 
               : selectedApplication.applicationStatus.marketing == "pending" ? `w-10 h-10 bg-yellow-500 status-circle mx-auto rounded-full text-lg text-white flex items-center` : `w-10 h-10 bg-red-500 status-circle mx-auto rounded-full text-lg text-black flex items-center` }>
-                <span class="text-white text-center w-full"><i class="fa fa-check w-full fill-current white"></i>2</span>
+                <span className="text-white text-center w-full"><i className="fa fa-check w-full fill-current white"></i>2</span>
               </div>
             </div>
 
-            <div class="w-1/6 align-center items-center align-middle content-center flex">
-              <div class="w-full bg-gray-300 rounded items-center align-middle align-center flex-1">
-                <div class={selectedApplication.applicationStatus.marketing == "done" ? `bg-green-400 text-xs leading-none py-1 text-center text-grey-darkest rounded` : 
+            <div className="w-1/6 align-center items-center align-middle content-center flex">
+              <div className="w-full bg-gray-300 rounded items-center align-middle align-center flex-1">
+                <div className={selectedApplication.applicationStatus.marketing == "done" ? `bg-green-400 text-xs leading-none py-1 text-center text-grey-darkest rounded` : 
             `text-xs leading-none py-1 text-center text-grey-darkest rounded`} style={{width:"100%"}}></div>
               </div>
             </div>
 
     {/* Compliance */}
-            <div class="flex-1">
-              <div class={selectedApplication.applicationStatus.compliance =="done" ? `w-10 h-10 bg-green-600 status-circle mx-auto rounded-full text-lg text-white flex items-center` 
+            <div className="flex-1">
+              <div className={selectedApplication.applicationStatus.compliance =="done" ? `w-10 h-10 bg-green-600 status-circle mx-auto rounded-full text-lg text-white flex items-center` 
               : selectedApplication.applicationStatus.compliance == "pending" ? `w-10 h-10 bg-yellow-500 status-circle mx-auto rounded-full text-lg text-white flex items-center` : `w-10 h-10 bg-red-500 status-circle mx-auto rounded-full text-lg text-black flex items-center` }>
-                <span class="text-gray-700 text-center w-full">3</span>
+                <span className="text-gray-700 text-center w-full">3</span>
               </div>
             </div>
 
 
-            <div class="w-1/6 align-center items-center align-middle content-center flex">
-              <div class="w-full bg-gray-400 rounded items-center align-middle align-center flex-1">
-                <div class={selectedApplication.applicationStatus.compliance == "done" ? `bg-green-400 text-xs leading-none py-1 text-center text-grey-darkest rounded` : 
+            <div className="w-1/6 align-center items-center align-middle content-center flex">
+              <div className="w-full bg-gray-400 rounded items-center align-middle align-center flex-1">
+                <div className={selectedApplication.applicationStatus.compliance == "done" ? `bg-green-400 text-xs leading-none py-1 text-center text-grey-darkest rounded` : 
             `text-xs leading-none py-1 text-center text-grey-darkest rounded`} style={{width:"100%"}}></div>
               </div>
             </div>
 
     {/* Business Head */}
-            <div class="flex-1">
-              <div class={selectedApplication.applicationStatus.businessHead =="done" ? `w-10 h-10 bg-green-600 status-circle mx-auto rounded-full text-lg text-white flex items-center` 
+            <div className="flex-1">
+              <div className={selectedApplication.applicationStatus.businessHead =="done" ? `w-10 h-10 bg-green-600 status-circle mx-auto rounded-full text-lg text-white flex items-center` 
               : selectedApplication.applicationStatus.businessHead == "pending" ? `w-10 h-10 bg-yellow-500 status-circle mx-auto rounded-full text-lg text-white flex items-center` 
               : `w-10 h-10 bg-red-500 status-circle mx-auto rounded-full text-lg text-black flex items-center` }>
-                <span class="text-black text-center w-full">4</span>
+                <span className="text-black text-center w-full">4</span>
               </div>
             </div>
 
 
-            <div class="flex-1">
+            <div className="flex-1">
             </div>
             
           </div>
 
-          <div class="flex text-base font-semibold   content-center text-center">
-            <div class="w-1/4">
+          <div className="flex text-base font-semibold   content-center text-center">
+            <div className="w-1/4">
               Legal
             </div>
 
-            <div class="w-1/4">
+            <div className="w-1/4">
               Marketing
             </div>
 
-            <div class="w-1/4">
+            <div className="w-1/4">
               Compliance
             </div>
 
-            <div class="w-1/4">
+            <div className="w-1/4">
               Business Head
             </div>
           </div>

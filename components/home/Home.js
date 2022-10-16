@@ -15,7 +15,7 @@ const Home = () => {
                                 pointerEvents='none'
                                 children={<AiOutlineSearch color='gray.300' size={22} />}
                             />
-                            <Input borderRadius={"8px"} type='text' size={"md"} backgroundColor={"#FFFFFF"} _placeholder={{color:"black"}} isFullWidth placeholder='Search submitted applications' />
+                            <Input borderRadius={"8px"} type='text' size={"md"} backgroundColor={"#FFFFFF"} _placeholder={{color:"black"}}  placeholder='Search submitted applications' />
                         </InputGroup>
 
 
