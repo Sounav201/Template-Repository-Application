@@ -2,7 +2,7 @@ import { Button } from '@chakra-ui/react'
 import React from 'react'
 import {AiOutlinePlus} from 'react-icons/ai'
 import TemplateCard from './TemplateCard'
-const Create = () => {
+const CreateComponent = () => {
     const templates = [{id:1,name:"Sanction Letter",color:"#4077C9"},{id:2,name:"Loan Agreement",color:"#DE4343"}, {id:3,name:"Welcome Letter",color:"#3AB77B"},{id:4,name:"Legal Notice",color:"#E98C1F"} ,{id:5,name:"TDS Certificate" ,color:"#7176EA"}]
   return (
     <div className='bg-transparent w-11/12 mx-auto'>
@@ -30,4 +30,4 @@ const Create = () => {
   )
 }
 
-export default Create
+export default CreateComponent

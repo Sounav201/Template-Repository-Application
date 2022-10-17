@@ -2,9 +2,9 @@ import Image from 'next/image'
 import React, { useContext } from 'react'
 import AppContext from '../../AppContext'
 import LeftSidebar from '../../components/common/LeftSidebar'
-import Home from '../../components/home/Home'
+import HomeComponent from '../../components/home/HomeComponent'
 
-const home = () => {
+const Home = () => {
     return (
     
     <div className='bg-[#2E0C6D] h-screen'>
@@ -46,11 +46,12 @@ const home = () => {
         </div>  */}
     
         <div className="px-6 pt-6 2xl:container bg-[#2E0C6D] h-full">
-                <Home />
+            
+                <HomeComponent />
         </div>
     </div>
                                     </div>
   )
 }
 
-export default home
+export default Home

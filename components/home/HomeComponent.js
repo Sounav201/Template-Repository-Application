@@ -2,7 +2,7 @@ import React from 'react'
 import { Input, InputLeftElement, InputGroup , Button} from '@chakra-ui/react'
 import { AiOutlineSearch } from 'react-icons/ai';
 import ApplicationHub from '../common/ApplicationHub/ApplicationHub';
-const Home = () => {
+const HomeComponent = () => {
     return (
         <div className='bg-transparent w-11/12 mx-auto'>
             <div className='my-3 p-1'>
@@ -12,9 +12,9 @@ const Home = () => {
                     <div className='w-3/5 '>
                         <InputGroup>
                             <InputLeftElement
-                                pointerEvents='none'
-                                children={<AiOutlineSearch color='gray.300' size={22} />}
-                            />
+                            pointerEvents='none'>
+                            <AiOutlineSearch color='gray.300' size={22} />
+                            </InputLeftElement>
                             <Input borderRadius={"8px"} type='text' size={"md"} backgroundColor={"#FFFFFF"} _placeholder={{color:"black"}}  placeholder='Search submitted applications' />
                         </InputGroup>
 
@@ -40,4 +40,4 @@ const Home = () => {
     )
 }
 
-export default Home
+export default HomeComponent

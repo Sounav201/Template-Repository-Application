@@ -4,7 +4,7 @@ import Router, { useRouter } from 'next/router'
 import AppContext from '../AppContext';
 
 
-const login = () => {
+const Login = () => {
   const {user,setuser} = useContext(AppContext)
   
   const router = useRouter();
@@ -164,4 +164,4 @@ const login = () => {
   )
 }
 
-export default login
+export default Login
