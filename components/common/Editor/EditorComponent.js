@@ -6,9 +6,14 @@ const EditorComponent = ({ variables }) => {
 
     return (
         <div className='w-11/12 mx-auto'>
-            <div className='shadow-md rounded-md px-2 p-2 bg-gray-200 '>
+            <div className='shadow-md rounded-md px-2 p-2 bg-white '>
+                <div className='w-full my-4'>
+                <img src="/tvslogo_2.png" className="w-52 object-fit" alt="tvs logo" height={50} width={50} />
+
+
+                </div>
                 <div className=' mb-8'>
-                    <h2 className='text-center text-black text-3xl font-semibold '>Sanction Letter</h2>
+                    <h2 className='text-center text-black text-2xl font-semibold underline font-serif'>Sanction Letter</h2>
                 </div>
 
                 <div className='my-2 h-full p-2 text-lg    w-full'>

@@ -26,10 +26,14 @@ const Editor = () => {
 
 
   return (
-    <div className='bg-[#2E0C6D] h-screen flex items-center justify-between'>
+    <div className='bg-[#2E0C6D] h-screen overflow-auto flex items-center justify-between'>
         <LeftSidebar activeTab={"create"} />
     <div className="mx-auto mb-6 lg:w-[75%] xl:w-[80%] 2xl:w-[85%]">
-    <div className='w-4/5 p-1 mx-auto'>
+    <div className='w-4/5 mt-20 p-1 mx-auto flex flex-col items-center '>
+     <div className='mb-8 mt-32 text-center p-1  py-4'>
+      <h2 className='text-white text-3xl font-semibold my-2'>Instructions </h2>
+      <p className='text-white text-lg'>Please enter the details of the variables in the right pane to fill in the application.</p>
+      </div> 
     <div className='w-11/12 mx-auto my-2 flex items-center justify-end'><Button colorScheme={"red"}>Preview</Button></div>
     <EditorComponent variables={variables} />
     </div>

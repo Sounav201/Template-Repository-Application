@@ -27,14 +27,14 @@ const LeftSidebar = ({ activeTab }) => {
 
 
     return (
-        <div>    <aside className="ml-[-100%] shadow-lg fixed z-10 top-0 pb-3 px-6 w-full flex flex-col justify-between h-screen  bg-[#0d0938] transition duration-300 md:w-4/12 lg:ml-0 lg:w-[25%] xl:w-[20%] 2xl:w-[15%]">
+        <div>    <aside className="ml-[-100%] shadow-lg fixed z-10 top-0 pb-3 px-6 w-full flex flex-col justify-between h-screen  bg-[#0d0938] transition duration-300 md:w-4/12 lg:ml-0 lg:w-[25%] xl:w-[20%] 2xl:w-[14%]">
             <div>
 
                 <div className="-mx-6 px-6 py-4">
-                    <a href="#" title="home" className='cursor-pointer'>
-                        {/* <Image src="/ticketifiedlogo.png" className="w-32 object-fit" alt="tailus logo" height={50} width={50} />
-                 */}
-                        <p className='text-3xl text-white hover:text-gray-200  font-bold text-center'>TVS</p>
+                    <a href="#" title="home" className='cursor-pointer flex justify-center items-center'>
+                        {/* <Image src="/ticketifiedlogo.png" className="w-32 object-fit" alt="tailus logo" height={50} width={50} />*/}     
+                        <img src="/tvslogo.png" className="w-32 object-fit" alt="tvs logo" height={50} width={50} />
+                        {/* <p className='text-3xl text-white hover:text-gray-200  font-bold text-center'>TVS</p> */}
                     </a>
                 </div>
 
