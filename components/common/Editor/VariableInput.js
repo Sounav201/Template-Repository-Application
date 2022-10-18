@@ -3,7 +3,7 @@ import React from 'react'
 const VariableInput = ({ variable, handleTextInput }) => {
 
     const handleChange = (e) => {
-        handleTextInput(variable, e.target.value);
+        handleTextInput(variable.id, e.target.value);
     };
 
 

@@ -143,3 +143,20 @@ a {
   top: 83px;
   left: 60px;
 }
+table {
+  width: 100%;
+  height: 200px;
+  border-collapse: collapse;
+  }
+  
+  th {
+  border-bottom: 1px solid black;
+  border: 2px solid black;
+  background-color: gainsboro;
+}
+  
+  td {
+  text-align: center;
+  border: 2px solid black;
+  }
+  
