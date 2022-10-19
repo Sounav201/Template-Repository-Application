@@ -56,7 +56,23 @@ const Editor = () => {
     const [selectedVariable, setselectedVariable] = useState(null);
     const [applicationBody, setapplicationBody] = useState(null);
     const applicationRef = useRef(null)
+    useEffect(() => {
+
+      if(typeof(window)!= undefined)
+      {
+        if(localStorage.getItem("applicationVariables"))
+      {
+        console.log('Getter runs!');
+        setVariables(JSON.parse(localStorage.getItem("applicationVariables")));
+                  
+      }
+        
+      }
+  
+      
+    }, [])
     
+  
     
   
     useEffect(() => {
@@ -65,8 +81,9 @@ const Editor = () => {
       {
         console.log('Setter runs!');
 
+        localStorage.setItem('applicationVariables',JSON.stringify(variables));
         localStorage.setItem("applicationBody", JSON.stringify(applicationBody));
-       //router.redirect('/preview'); 
+
        router.push('preview');
       }
 
