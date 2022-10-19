@@ -66,7 +66,8 @@ const Editor = () => {
         console.log('Setter runs!');
 
         localStorage.setItem("applicationBody", JSON.stringify(applicationBody));
-       router.push('/preview'); 
+       //router.redirect('/preview'); 
+       router.push('preview');
       }
 
     }, [applicationBody])
