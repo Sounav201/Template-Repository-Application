@@ -1,13 +1,16 @@
+import { Button } from '@chakra-ui/react';
 import React from 'react'
 
-const EditorComponent = ({ variables ,handleSelection}) => {
+const EditorComponent = ({ variables ,handleSelection,applicationRef, handleRef}) => {
 
     let index = 0;
 
 
     return (
         <div className='w-11/12 mx-auto mb-6'>
-            <div className='shadow-md rounded-md px-2 p-2 bg-white '>
+                <div className='w-11/12 mx-auto my-4 flex items-center justify-end'><Button colorScheme={"red"}  onClick={handleRef}>Preview</Button></div>
+
+            <div className='shadow-md rounded-md px-2 p-2 bg-white ' ref={applicationRef}>
                 <div className='w-full '>
                 <img src="/tvslogo_2.png" className="w-52 object-fit" alt="tvs logo" height={50} width={50} />
                 </div>

@@ -30,7 +30,7 @@ const VariablesDrawer = ({ selectedVariable, handleTextInput, setselectedVariabl
                     <DrawerBody>
                         <VariableInput variable={selectedVariable} handleTextInput={handleTextInput} />
                         <div className='my-2 '>        
-                        <Button variant='solid' colorScheme={"whatsapp"} mr={3} onClick={handleClose}>
+                        <Button  variant='solid' colorScheme={"whatsapp"} mr={3} onClick={handleClose}>
                             Save
                         </Button>
                         </div>

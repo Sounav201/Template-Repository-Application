@@ -1,5 +1,5 @@
 import { Button, useDisclosure } from '@chakra-ui/react'
-import React, { useEffect, useState } from 'react'
+import React, { useEffect, useState ,useRef} from 'react'
 import EditorComponent from '../../components/common/Editor/EditorComponent'
 import VariablesBar from '../../components/common/Editor/VariablesBar'
 import LeftSidebar from '../../components/common/LeftSidebar'
@@ -13,6 +13,9 @@ import {
   DrawerCloseButton,
 } from '@chakra-ui/react'
 import VariablesDrawer from '../../components/common/Editor/VariablesDrawer'
+import Router, { useRouter } from 'next/router'
+import Swal from 'sweetalert2'
+
 
 const Editor = () => {
 
@@ -47,10 +50,29 @@ const Editor = () => {
     {id:27, name:"instaFee", data:"", click:false},
     {id:28, name:"deductionSum", data:"", click:false},
     {id:29, name:"Sender name", data:"", click:false},]);
- 
+    const router = useRouter();
+
     const { isOpen, onOpen, onClose } = useDisclosure()
-    const [placement, setPlacement] = React.useState('right')
     const [selectedVariable, setselectedVariable] = useState(null);
+    const [applicationBody, setapplicationBody] = useState(null);
+    const applicationRef = useRef(null)
+    
+    
+  
+    useEffect(() => {
+      console.log('Application Body : ', applicationBody, typeof(applicationBody))
+      if(typeof(window)!= undefined && applicationBody!=null)
+      {
+        console.log('Setter runs!');
+
+        localStorage.setItem("applicationBody", JSON.stringify(applicationBody));
+       router.push('/preview'); 
+      }
+
+    }, [applicationBody])
+
+  
+
 
     const handleTextInput = (ID, inputText) => {
         setVariables((prevState) => {
@@ -71,11 +93,44 @@ const Editor = () => {
       
        }
 
-       useEffect(() => {
-        console.log('Selected Variable : ', selectedVariable);
-      }, [selectedVariable])
-      
-      
+      function checkEmpty()  {
+        console.log('In empty check');
+        console.log(variables)
+        // variables.map((item) => {
+        //   console.log(item.data,item.data.length)
+        //   if(item.data.length>0) {
+        //     console.log('Not empty');
+        //     return false;
+        //   }
+        // })
+        for(var i = 0;i<variables.length;i++) {
+          if(variables[i].data.length>0) {
+            console.log('Not empty');
+            return false;
+          }
+        }
+        console.log('Outside!')
+        return true;
+      }
+      const handleRef = () => {
+        //Check if user has filled out any of the fields
+        console.log('Ref : ', applicationRef.current);
+
+        if(checkEmpty())
+        { console.log('Fields empty')
+          Swal.fire({
+            icon: 'error',
+            title: 'Oops...',
+            text: 'Please enter some data!',
+            footer: '<a href="">Why do I have this issue?</a>'
+          })
+          return;
+        }
+        else{
+          console.log('Fill application body')
+        setapplicationBody(applicationRef.current.outerHTML);
+        }
+      }
 
 
   return (
@@ -88,8 +143,7 @@ const Editor = () => {
       <p className='text-white text-lg'>Please enter the details of the variables in the right pane to fill in the application.</p>
       </div> 
     <div className='mt-2'>
-    <div className='w-11/12 mx-auto my-4 flex items-center justify-end'><Button colorScheme={"red"}>Preview</Button></div>
-    <EditorComponent variables={variables} handleSelection={handleSelection} />
+    <EditorComponent variables={variables} handleSelection={handleSelection} applicationRef={applicationRef} handleRef={handleRef} />
     </div>
     </div>
 
