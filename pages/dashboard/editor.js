@@ -66,7 +66,12 @@ const Editor = () => {
       {
         console.log('Getter runs!');
         setVariables(JSON.parse(localStorage.getItem("applicationVariables")));
+      }
+      if(localStorage.getItem("applicationLanguage"))
+      {
+        setlanguage(JSON.parse(localStorage.getItem("applicationLanguage")));
                   
+
       }
         
       }
@@ -85,6 +90,7 @@ const Editor = () => {
 
         localStorage.setItem('applicationVariables',JSON.stringify(variables));
         localStorage.setItem("applicationBody", JSON.stringify(applicationBody));
+        localStorage.setItem("applicationLanguage", JSON.stringify(language));
 
        router.push('preview');
       }
@@ -150,7 +156,7 @@ const Editor = () => {
       }
 
       const handleLanguageSelection = (chosenLang) => {
-        console.log('Chosen language : ', chosenLang);
+      //  console.log('Chosen language : ', chosenLang);
         setlanguage(chosenLang);
 
       }
