@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useRef } from 'react'
 import {
     Drawer,
     DrawerBody,
@@ -10,10 +10,16 @@ import {
 } from '@chakra-ui/react'
 import { Button, useDisclosure } from '@chakra-ui/react'
 import VariableInput from './VariableInput'
+import { useOutsideClick } from '@chakra-ui/react'
 
 const VariablesDrawer = ({ selectedVariable, handleTextInput, setselectedVariable }) => {
 
     const { isOpen, onOpen, onClose } = useDisclosure()
+    const ref = useRef(null)
+    useOutsideClick({
+        ref: ref,
+        handler: () => setselectedVariable(null),
+      })
     const handleClose = () => {
         setselectedVariable(null);
         onClose();
@@ -23,8 +29,8 @@ const VariablesDrawer = ({ selectedVariable, handleTextInput, setselectedVariabl
 
     return (
         <div>
-            <Drawer placement={"right"} onClose={onClose} isOpen={selectedVariable != null}>
-                <DrawerOverlay />
+            <Drawer ref={ref} placement={"right"} onClose={onClose} isOpen={selectedVariable != null } closeOnOverlayClick  closeOnEsc>
+                <DrawerOverlay closeOnOverlayClick />
                 <DrawerContent>
                     <DrawerHeader borderBottomWidth='1px'>Type in your variable here</DrawerHeader>
                     <DrawerBody>

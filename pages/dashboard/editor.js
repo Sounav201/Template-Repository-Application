@@ -10,7 +10,7 @@ import {
   DrawerHeader,
   DrawerOverlay,
   DrawerContent,
-  DrawerCloseButton,
+  DrawerCloseButton,Select 
 } from '@chakra-ui/react'
 import VariablesDrawer from '../../components/common/Editor/VariablesDrawer'
 import Router, { useRouter } from 'next/router'
@@ -55,6 +55,8 @@ const Editor = () => {
     const { isOpen, onOpen, onClose } = useDisclosure()
     const [selectedVariable, setselectedVariable] = useState(null);
     const [applicationBody, setapplicationBody] = useState(null);
+    const [language,setlanguage] = useState("en");
+
     const applicationRef = useRef(null)
     useEffect(() => {
 
@@ -112,8 +114,6 @@ const Editor = () => {
        }
 
       function checkEmpty()  {
-        console.log('In empty check');
-        console.log(variables)
         // variables.map((item) => {
         //   console.log(item.data,item.data.length)
         //   if(item.data.length>0) {
@@ -123,16 +123,15 @@ const Editor = () => {
         // })
         for(var i = 0;i<variables.length;i++) {
           if(variables[i].data.length>0) {
-            console.log('Not empty');
             return false;
           }
         }
-        console.log('Outside!')
         return true;
       }
+      
       const handleRef = () => {
         //Check if user has filled out any of the fields
-        console.log('Ref : ', applicationRef.current);
+        //console.log('Ref : ', applicationRef.current);
 
         if(checkEmpty())
         { console.log('Fields empty')
@@ -150,6 +149,11 @@ const Editor = () => {
         }
       }
 
+      const handleLanguageSelection = (chosenLang) => {
+        console.log('Chosen language : ', chosenLang);
+        setlanguage(chosenLang);
+
+      }
 
   return (
     <div className='bg-[#2E0C6D] h-screen overflow-auto flex items-center justify-between'>
@@ -158,10 +162,17 @@ const Editor = () => {
     <div className='w-4/5  p-1 mx-auto flex flex-col items-center '>
      <div className='my-4 text-center p-1  py-4'>
       <h2 className='text-white text-3xl font-semibold my-2'>Instructions </h2>
-      <p className='text-white text-lg'>Please enter the details of the variables in the right pane to fill in the application.</p>
+      <p className='text-white text-lg'>Click on the variables as marked in the document to open up a right pane</p>
       </div> 
     <div className='mt-2'>
-    <EditorComponent variables={variables} handleSelection={handleSelection} applicationRef={applicationRef} handleRef={handleRef} />
+    <EditorComponent 
+    variables={variables} 
+    handleSelection={handleSelection} 
+    applicationRef={applicationRef} 
+    handleRef={handleRef} 
+    handleLanguageSelection={handleLanguageSelection} 
+    language={language}
+    />
     </div>
     </div>
 
