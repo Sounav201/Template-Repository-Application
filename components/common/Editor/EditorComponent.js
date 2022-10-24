@@ -62,8 +62,8 @@ const EditorComponent = ({ variables, handleSelection, applicationRef, handleRef
                             Pursuant to the agreement executed by the customer in our favour with respect to the loan facility and on the basis of the instructions of the Customer we are disbursing the following amount in your favour.</p>
                         <br />
                         <p className='text-black text-left'>Kindly arrange the delivery of the product to the customer at the below address only.</p>
-                        <p className='text-black text-left'>Customer Name: <span onClick={() => handleSelection(variables[index + 4].id)} className='hover:font-bold hover:shadow-md p-1  hover:bg-slate-300 duration-300 transition cursor-pointer'>
-                            <b>{variables[index + 4].data.length === 0 ? <b>{`[${variables[index + 4].name}]`}</b> : <b>{`${variables[index + 4].data}`}</b>}</b></span></p>
+                        <p className='text-black text-left'>Customer Name: <span onClick={() => handleSelection(variables[index + 3].id)} className='hover:font-bold hover:shadow-md p-1  hover:bg-slate-300 duration-300 transition cursor-pointer'>
+                            <b>{variables[index + 3].data.length === 0 ? <b>{`[${variables[index + 3].name}]`}</b> : <b>{`${variables[index + 3].data}`}</b>}</b></span></p>
 
                         <p className='text-black text-left'>Mobile Number: <span onClick={() => handleSelection(variables[index + 5].id)} className='hover:font-bold hover:shadow-md p-1  hover:bg-slate-300 duration-300 transition cursor-pointer'>
                             <b>{variables[index + 5].data.length === 0 ? <b>{`[${variables[index + 5].name}]`}</b> : <b>{`${variables[index + 5].data}`}</b>}</b></span></p>
@@ -225,8 +225,8 @@ const EditorComponent = ({ variables, handleSelection, applicationRef, handleRef
                     <p className='text-black text-left'>মহাশয়,</p>
                     <p className='text-black text-left'>বিষয় : অনুমোদনের চিঠি - <span className='hover:font-bold hover:shadow-md p-1  hover:bg-slate-300 duration-300 transition cursor-pointer' onClick={() => handleSelection(variables[index + 2].id)}>{variables[index + 2].data.length === 0 ? <b>{`[${variables[index + 2].name}]`}</b> : <b>{`${variables[index + 2].data}`}</b>}</span> ডিলার কপি </p>
                     <br />
-                    <p className='text-black text-left'>আমরা আমােদর গ্রাহক <span onClick={() => handleSelection(variables[index + 4].id)} className='hover:font-bold hover:shadow-md p-1  hover:bg-slate-300 duration-300 transition cursor-pointer'>{variables[index + 4].data.length === 0 ? <b>{`[${variables[index + 4].name}]`}</b> : <b>{`${variables[index + 4].data}`}</b>}</span>
-                        কে <span onClick={() => handleSelection(variables[index + 3].id)} className='hover:font-bold hover:shadow-md p-1  hover:bg-slate-300 duration-300 transition cursor-pointer'>{variables[index + 3].data.length === 0 ? <b>{`[${variables[index + 3].name}]`}</b> : <b>{`${variables[index + 3].data}`}</b>}</span>.
+                    <p className='text-black text-left'>আমরা আমােদর গ্রাহক <span onClick={() => handleSelection(variables[index + 3].id)} className='hover:font-bold hover:shadow-md p-1  hover:bg-slate-300 duration-300 transition cursor-pointer'>{variables[index + 3].data.length === 0 ? <b>{`[${variables[index + 3].name}]`}</b> : <b>{`${variables[index + 3].data}`}</b>}</span>
+                        কে <span onClick={() => handleSelection(variables[index + 4].id)} className='hover:font-bold hover:shadow-md p-1  hover:bg-slate-300 duration-300 transition cursor-pointer'>{variables[index + 4].data.length === 0 ? <b>{`[${variables[index + 4].name}]`}</b> : <b>{`${variables[index + 4].data}`}</b>}</span>.
                         লোন সুবিধার বিষয়ে এবং গ্রাহকের নির্দেশের ভিত্তিতে গ্রাহকের দ্বারা আমাদের পক্ষে সম্পাদিত চুক্তি অনুসারে আমরা আপনার পক্ষে নিম্নলিখিত পরিমাণ বিতরণ করছি।</p>
                     <br />
                     <p className='text-black text-left'>অনুগ্রহ করে শুধুমাত্র নীচের ঠিকানায় গ্রাহকের কাছে পণ্য সরবরাহের ব্যবস্থা করুন।</p>

@@ -3,11 +3,13 @@ import React, { useContext, useEffect, useRef, useState } from 'react'
 import LeftSidebar from '../../components/common/LeftSidebar'
 import Router, { useRouter } from 'next/router'
 import AppContext from '../../AppContext';
+import Swal from 'sweetalert2'
+
 const Preview = () => {
 
     const [previewapplicationBody, setpreviewapplicationBody] = useState(null);
     const router = useRouter();
-    const {user} =useContext(AppContext);
+    const {user,userEmail} =useContext(AppContext);
 
     useEffect(() => {
 
@@ -19,14 +21,38 @@ const Preview = () => {
             console.log('Preview : ', previewContent , typeof(previewContent));
             setpreviewapplicationBody(JSON.parse(localStorage.getItem("applicationBody")));
             
+          }
         }
-
-
-          
-        }
-    
-        
       }, [])
+
+    const Sendapplicationhandler =  async () => {
+      //email, appbody, apptype, tempid, userRole
+      //TO DO : Need to delete the local storage variables post successful submission -> applicationBody, applicationVariables, applicationLanguage
+      const email = userEmail || "";
+      const appbody = previewapplicationBody;
+      const apptype = "Sanction Letter";
+      const tempid = "1";
+      const userRole = user || "";
+      const res = await fetch('/api/createApplication', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({ email, appbody, apptype, tempid, userRole }),
+      });
+      const data = await res.json();
+      //console.log(data);
+      if(data.message =="ok")
+      {
+        Swal.fire(
+          'Good job!',
+          'Your application has been sent for review!',
+          'success'
+        );
+      router.push('/dashboard/home');
+      }
+
+    }
 
 
   return (
@@ -40,7 +66,7 @@ const Preview = () => {
         {user === "Executor" && 
               <div className='p-1 flex items-center justify-between my-4  w-5/6 mx-auto '>
               <Button colorScheme="red" onClick={() => router.back()} >Go Back</Button>
-              <Button colorScheme="whatsapp" >Send for Approval</Button>
+              <Button colorScheme="whatsapp" onClick={Sendapplicationhandler}>Send for Approval</Button>
               
           </div>}
         {user.includes("Approver")  && <div className='p-1 flex items-center justify-between my-4  w-5/6 mx-auto '>

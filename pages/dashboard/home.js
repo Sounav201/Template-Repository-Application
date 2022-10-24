@@ -4,7 +4,9 @@ import AppContext from '../../AppContext'
 import LeftSidebar from '../../components/common/LeftSidebar'
 import HomeComponent from '../../components/home/HomeComponent'
 
-const Home = () => {
+const Home = ({data}) => {
+
+    console.log('Data from endpoint : ', data);
     return (
     
     <div className='bg-[#2E0C6D] h-screen'>
@@ -54,4 +56,12 @@ const Home = () => {
   )
 }
 
+export async function getStaticProps(context) {
+    let res =  await fetch('http://localhost:3000/api/hello')
+    let data = await res.json();
+
+    return {
+      props: {data}, // will be passed to the page component as props
+    }
+  }
 export default Home

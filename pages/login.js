@@ -5,7 +5,7 @@ import AppContext from '../AppContext';
 
 
 const Login = () => {
-  const {user,setuser} = useContext(AppContext)
+  const {user,setuser,userEmail, setuserEmail} = useContext(AppContext)
   
   const router = useRouter();
   const [email, setEmail] = useState("")
@@ -36,9 +36,11 @@ const Login = () => {
         .then(data => {
           if (data.message === 'Login Successful') {
             localStorage.setItem('token', data.token)
-            console.log("User role logged in ", data.role);
+            //console.log("User role logged in ", data.role);
             localStorage.setItem('role', data.role);
+            localStorage.setItem('email', data.email);
             setuser(data.role);
+            setuserEmail(data.email);
             router.push('/dashboard/home')
           } else {
             alert(data.message)
@@ -112,7 +114,7 @@ const Login = () => {
 
                 <div className='mx-auto flex items-center gap-4 '>
                   <label>Choose user role</label>
-                  <select className='focus:outline-none rounded-lg bg-slate-700 p-1 text-white ' required onChange={(e) => setRoleSelected(e.target.value)}>
+                  <select className='focus:outline-none rounded-lg bg-slate-700 p-1 text-white ' required={true} onChange={(e) => setRoleSelected(e.target.value)}>
                     <option value={0}>Choose your role</option>
                     <option value={1}>Executor</option>
                     <option value={2}>Creator</option>

@@ -4,7 +4,8 @@ import List from './List'
 import dayjs from 'dayjs'
 
 const ApplicationHub = () => {
-  const applications =[{id:1,name:"Loan Agreement 1", applicationID:"LOAN-1234", createdAt:"2022-08-11", statusSummary:"Pending", departmentBlocked:"Marketing", applicationStatus : {legal:'done',marketing:'pending',compliance:'onhold',businessHead:'onhold'}}, 
+  const applications =[
+  {id:1,name:"Loan Agreement 1", applicationID:"LOAN-1234", createdAt:"2022-08-11", statusSummary:"Pending", departmentBlocked:"Marketing", applicationStatus : {legal:'done',marketing:'pending',compliance:'onhold',businessHead:'onhold'}}, 
   {id:2,name:"Sanction Letter", applicationID:"SANCTION-734", createdAt:"2022-08-21", statusSummary:"Pending", departmentBlocked:"Compliance", applicationStatus : {legal:'done',marketing:'done',compliance:'pending',businessHead:'onhold'}},  
   {id:3,name:"Legal Notice 1", applicationID:"LEGAL-694", createdAt:"2022-03-04", statusSummary:"Pending", departmentBlocked:"Compliance", applicationStatus : {legal:'done',marketing:'done',compliance:'pending',businessHead:'onhold'}},  
   {id:4,name:"Loan Agreement 2", applicationID:"LOAN-46", createdAt:"2022-10-10", statusSummary:"Done", departmentBlocked:"None", applicationStatus : {legal:'done',marketing:'done',compliance:'done',businessHead:'done'}}, 

@@ -48,7 +48,7 @@ export default async function handler(req, res) {
                 role = "Business Head";
             }
 
-            return res.status(200).json({ message: "Login Successful", token: jwtToken , role:role });
+            return res.status(200).json({ message: "Login Successful", token: jwtToken , role:role, email:email });
 
         }
         else {

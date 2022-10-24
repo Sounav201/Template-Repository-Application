@@ -5,6 +5,7 @@ import { useEffect, useState } from 'react'
 
 function MyApp({ Component, pageProps }) {
   const [user, setuser] = useState('')
+  const [userEmail, setuserEmail] = useState('')
   useEffect(() => {
     if(user.length == 0 || user== null )
     {
@@ -36,7 +37,7 @@ function MyApp({ Component, pageProps }) {
   return (
     
     <ChakraProvider>
-  { <AppContext.Provider value={{user, setuser}}>
+  { <AppContext.Provider value={{user, setuser,userEmail, setuserEmail}}>
     <Component {...pageProps} />
     </AppContext.Provider>
   }
