@@ -3,6 +3,7 @@ import React, { useContext ,useEffect} from 'react'
 import AppContext from '../../AppContext'
 import LeftSidebar from '../../components/common/LeftSidebar'
 import HomeComponent from '../../components/home/HomeComponent'
+import axios from 'axios';
 
 
 const Home = ({data}) => {
@@ -63,7 +64,7 @@ const Home = ({data}) => {
   )
 }
 
-export async function getStaticProps(context) {
+export async function getServerSideProps(context) {
     var APIendpoint;
     if (process.env.NODE_ENV === 'development') {
         APIendpoint = 'http://localhost:3000/api/fetchApplication'
@@ -72,8 +73,8 @@ export async function getStaticProps(context) {
         APIendpoint = 'https://templaterepo.vercel.app/api/fetchApplication';
     }
 
-    let res =  await fetch(APIendpoint)
-    let data = await res.json();
+    let res =  await axios.get(APIendpoint);
+    let data = await res.data;
 
     function buildApplicationStatus(approvalType, rejectionStatus){
         let applicationStatus = {legal:'',marketing:'',compliance:'',businessHead:''};
