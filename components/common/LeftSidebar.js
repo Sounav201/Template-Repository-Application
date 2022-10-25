@@ -31,7 +31,7 @@ const LeftSidebar = ({ activeTab }) => {
             <div>
 
                 <div className="-mx-6 px-6 py-4">
-                    <a href="#" title="home" className='cursor-pointer flex justify-center items-center'>
+                    <a href="#" title="home" className='cursor-pointer flex justify-center items-center outline-none'>
                         {/* <Image src="/ticketifiedlogo.png" className="w-32 object-fit" alt="tailus logo" height={50} width={50} />*/}     
                         <img src="/tvslogo.png" className="w-32 object-fit" alt="tvs logo" height={50} width={50} />
                         {/* <p className='text-3xl text-white hover:text-gray-200  font-bold text-center'>TVS</p> */}

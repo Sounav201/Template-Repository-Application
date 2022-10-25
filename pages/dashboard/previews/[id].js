@@ -1,8 +1,8 @@
 import { Button } from '@chakra-ui/react';
 import React, { useContext, useEffect, useRef, useState } from 'react'
-import LeftSidebar from '../../components/common/LeftSidebar'
+import LeftSidebar from '../../../components/common/LeftSidebar'
 import Router, { useRouter } from 'next/router'
-import AppContext from '../../AppContext';
+import AppContext from '../../../AppContext';
 import Swal from 'sweetalert2'
 
 const Preview = () => {
@@ -49,9 +49,6 @@ const Preview = () => {
           'Your application has been sent for review!',
           'success'
         );
-        localStorage.removeItem("applicationBody");
-        localStorage.removeItem("applicationVariables");
-        localStorage.removeItem("applicationLanguage");
       router.push('/dashboard/home');
       }
 
@@ -69,7 +66,7 @@ const Preview = () => {
         {user === "Executor" && 
               <div className='p-1 flex items-center justify-between my-4  w-5/6 mx-auto '>
               <Button colorScheme="red" onClick={() => router.back()} >Go Back</Button>
-              <Button colorScheme="whatsapp" onClick={Sendapplicationhandler}>Send for Approval</Button>
+              {/* <Button colorScheme="whatsapp" onClick={Sendapplicationhandler}>Send for Approval</Button> */}
               
           </div>}
         {user.includes("Approver")  && <div className='p-1 flex items-center justify-between my-4  w-5/6 mx-auto '>

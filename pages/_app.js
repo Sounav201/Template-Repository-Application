@@ -6,6 +6,7 @@ import { useEffect, useState } from 'react'
 function MyApp({ Component, pageProps }) {
   const [user, setuser] = useState('')
   const [userEmail, setuserEmail] = useState('')
+  const [applications, setapplications ] = useState([]);
   useEffect(() => {
     if(user.length == 0 || user== null )
     {
@@ -37,7 +38,7 @@ function MyApp({ Component, pageProps }) {
   return (
     
     <ChakraProvider>
-  { <AppContext.Provider value={{user, setuser,userEmail, setuserEmail}}>
+  { <AppContext.Provider value={{user, setuser,userEmail, setuserEmail,applications, setapplications}}>
     <Component {...pageProps} />
     </AppContext.Provider>
   }
