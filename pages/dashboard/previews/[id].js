@@ -4,8 +4,15 @@ import LeftSidebar from '../../../components/common/LeftSidebar'
 import Router, { useRouter } from 'next/router'
 import AppContext from '../../../AppContext';
 import Swal from 'sweetalert2'
+import { useReactToPrint } from 'react-to-print';
+import { render } from 'react-dom';
 
 const Preview = () => {
+    // PDF CODE
+    const componentRef = useRef(); // null 
+    const handlePrint = useReactToPrint({
+      content: () => componentRef.current,
+    });
 
     const [previewapplicationBody, setpreviewapplicationBody] = useState(null);
     const router = useRouter();
@@ -66,7 +73,8 @@ const Preview = () => {
         {user === "Executor" && 
               <div className='p-1 flex items-center justify-between my-4  w-5/6 mx-auto '>
               <Button colorScheme="red" onClick={() => router.back()} >Go Back</Button>
-              {/* <Button colorScheme="whatsapp" onClick={Sendapplicationhandler}>Send for Approval</Button> */}
+              <Button colorScheme="whatsapp" onClick={handlePrint}>Print</Button>
+              {/* <button className="p-1 bg-green-500" onClick={handlePrint}>Print this out!</button> */}
               
           </div>}
         {user.includes("Approver")  && <div className='p-1 flex items-center justify-between my-4  w-5/6 mx-auto '>
@@ -77,7 +85,7 @@ const Preview = () => {
 
 </div>}
 
-    {previewapplicationBody && <div className='   w-5/6 mx-auto p-1 mb-12' dangerouslySetInnerHTML={{ __html: previewapplicationBody }}></div>}
+    {previewapplicationBody && <div ref = { componentRef } className='   w-5/6 mx-auto p-1 mb-12' dangerouslySetInnerHTML={{ __html: previewapplicationBody }}></div>}
 
     </div>
     </div>

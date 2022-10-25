@@ -5,7 +5,11 @@ import Router, { useRouter } from 'next/router'
 import AppContext from '../../AppContext';
 import Swal from 'sweetalert2'
 
+
+
 const Preview = () => {
+
+    
 
     const [previewapplicationBody, setpreviewapplicationBody] = useState(null);
     const router = useRouter();
