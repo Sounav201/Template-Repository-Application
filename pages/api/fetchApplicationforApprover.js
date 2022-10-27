@@ -4,20 +4,19 @@ import conn from "../../utils/db"
 
 export default async function handler(req, res) {
   try {
-   const {appID} = req.body;
+   const {approverID} = req.body;
 
-  const query = `Select * from public.applications where "appid" = '${appID}'`;
+  const query = `Select * from public.applications where "approvaltype" = '${approverID}'`;
 
   const results = await conn.query(query);
-//  console.log(results.rows[0]);
 
   if(results.rowCount>0)
   {
-    res.status(200).json({ application: results.rows });
+    res.status(200).json({ applications: results.rows });
   
   }
   else{
-    res.status(201).json({ message: `No application found having ID ${appID}` });
+    res.status(201).json({ message: `No applications found having approverID ${approverID}` });
   
   }
  

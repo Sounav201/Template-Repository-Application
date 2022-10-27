@@ -8,12 +8,15 @@ import axios from 'axios';
 
 const Home = ({data}) => {
 
-    const {setapplications} = useContext(AppContext);
+    const {user,setapplications} = useContext(AppContext);
     const {applicationsList} = data;
     useEffect(() => {
-        setapplications(data.applicationsList);
+        if(user=="Executor")
+        {
+            setapplications(data.applicationsList);
+        }
 
-    })
+    },[user])
     
     return (
     

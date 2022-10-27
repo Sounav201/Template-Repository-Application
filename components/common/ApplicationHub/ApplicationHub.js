@@ -3,6 +3,7 @@ import DisplayCard from './DisplayCard'
 import List from './List'
 import dayjs from 'dayjs'
 import AppContext from '../../../AppContext'
+import ApprovalList from './ApprovalList'
 
 
 const ApplicationHub = () => {
@@ -27,6 +28,8 @@ const ApplicationHub = () => {
 
  }
 
+
+
 useEffect(() => {
   console.log('Selected Application : ', selectedApplication);
 }, [selectedApplication]);
@@ -42,7 +45,11 @@ useEffect(() => {
 
   return (
     <div className='w-full p-1 rounded-lg shadow-lg border-white border-solid border-2'>
-        {applications.length > 0 &&
+        
+        {user.includes("Approver") ? <div>
+          <ApprovalList applications={applications} />
+        </div>: user.includes("Executor") &&  (<>
+          {applications.length > 0 &&
         (
           <div className='grid grid-cols-12'>
           <div className='col-span-4'>
@@ -57,6 +64,7 @@ useEffect(() => {
         </div>
  
         )}
+</>)}
     </div>
   )
 }

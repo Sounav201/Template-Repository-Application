@@ -35,17 +35,17 @@ export default async function handler(req, res) {
                 role = "Creator";
             }
             else if (roleID == 3) {
-                role = "Legal";
+                role = "Legal Approver";
             }
             else if(roleID == 4){
-                role = "Marketing";
+                role = "Marketing Approver";
             }
             else if(roleID == 5){
-                role = "Compliance";
+                role = "Compliance Approver";
             }
             else if(roleID == 6)
             {
-                role = "Business Head";
+                role = "Business Head Approver";
             }
 
             return res.status(200).json({ message: "Login Successful", token: jwtToken , role:role, email:email });

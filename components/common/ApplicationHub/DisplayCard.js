@@ -9,7 +9,7 @@ const DisplayCard = ({ selectedApplication }) => {
 
   ////appid,apptype,createdon,approvaltype,email,rejectionstatus,rejectioncomments,
   const handlePreviewClick = () => {
-    if (typeof (window) != undefined) {
+    if (typeof (window) != undefined && (selectedApplication != null || selectedApplication!= undefined)) {
       //  console.log('Setter runs!');
       const applicationBody = selectedApplication.appbody;
 
@@ -17,7 +17,7 @@ const DisplayCard = ({ selectedApplication }) => {
       router.push(`previews/${selectedApplication.appid}`);
     }
   }
-  if (selectedApplication) {
+  if (selectedApplication != null || selectedApplication!= undefined) {
     return (
       <div className='w-full bg-gray-100 h-full rounded-r-lg'>
         <div className='w-11/12 mx-auto p-2'>
@@ -25,12 +25,12 @@ const DisplayCard = ({ selectedApplication }) => {
             <div className='text-xl flex flex-col gap-y-4'>
               <div>
                 <label className=''>Application ID : </label>
-                <span className='text-black font-semibold '>{selectedApplication.appid}</span>
+                <span className='text-black font-semibold '>{selectedApplication?.appid}</span>
               </div>
 
               <div>
                 <label className=''>Created At : </label>
-                <span className='text-black font-semibold '>{dayjs(selectedApplication.createdon).format('DD MMM YYYY')}</span>
+                <span className='text-black font-semibold '>{dayjs(selectedApplication?.createdon).format('DD MMM YYYY')}</span>
               </div>
 
             </div>
@@ -70,8 +70,8 @@ const DisplayCard = ({ selectedApplication }) => {
 
                   {/* Legal*/}
                   <div className="flex-1">
-                    <div className={selectedApplication.applicationStatus.legal == "approved" ? `w-10 h-10 bg-green-600 status-circle mx-auto rounded-full text-lg text-white flex items-center`
-                      : selectedApplication.applicationStatus.legal == "pending" ? `w-10 h-10 bg-yellow-500 status-circle mx-auto rounded-full text-lg text-white flex items-center` : `w-10 h-10 bg-red-500 status-circle mx-auto rounded-full text-lg text-black flex items-center`}>
+                    <div className={selectedApplication?.applicationStatus?.legal == "approved" ? `w-10 h-10 bg-green-600 status-circle mx-auto rounded-full text-lg text-white flex items-center`
+                      : selectedApplication?.applicationStatus?.legal == "pending" ? `w-10 h-10 bg-yellow-500 status-circle mx-auto rounded-full text-lg text-white flex items-center` : `w-10 h-10 bg-red-500 status-circle mx-auto rounded-full text-lg text-black flex items-center`}>
                       <span className="text-white text-center w-full"><i className="fa fa-check w-full fill-current white"></i>1</span>
                     </div>
                   </div>
@@ -79,30 +79,30 @@ const DisplayCard = ({ selectedApplication }) => {
 
                   <div className="w-1/6 align-center items-center align-middle content-center flex">
                     <div className="w-full bg-gray-300 rounded items-center align-middle align-center flex-1">
-                      <div className={selectedApplication.applicationStatus.legal == "approved" ? `bg-green-400 text-xs leading-none py-1 text-center text-grey-darkest rounded` :
+                      <div className={selectedApplication?.applicationStatus?.legal == "approved" ? `bg-green-400 text-xs leading-none py-1 text-center text-grey-darkest rounded` :
                         `text-xs leading-none py-1 text-center text-grey-darkest rounded`} style={{ width: "100%" }}></div>
                     </div>
                   </div>
 
                   {/* Marketing */}
                   <div className="flex-1">
-                    <div className={selectedApplication.applicationStatus.marketing == "approved" ? `w-10 h-10 bg-green-600 status-circle mx-auto rounded-full text-lg text-white flex items-center`
-                      : selectedApplication.applicationStatus.marketing == "pending" ? `w-10 h-10 bg-yellow-500 status-circle mx-auto rounded-full text-lg text-white flex items-center` : `w-10 h-10 bg-red-500 status-circle mx-auto rounded-full text-lg text-black flex items-center`}>
+                    <div className={selectedApplication?.applicationStatus?.marketing == "approved" ? `w-10 h-10 bg-green-600 status-circle mx-auto rounded-full text-lg text-white flex items-center`
+                      : selectedApplication?.applicationStatus?.marketing == "pending" ? `w-10 h-10 bg-yellow-500 status-circle mx-auto rounded-full text-lg text-white flex items-center` : `w-10 h-10 bg-red-500 status-circle mx-auto rounded-full text-lg text-black flex items-center`}>
                       <span className="text-white text-center w-full"><i className="fa fa-check w-full fill-current white"></i>2</span>
                     </div>
                   </div>
 
                   <div className="w-1/6 align-center items-center align-middle content-center flex">
                     <div className="w-full bg-gray-300 rounded items-center align-middle align-center flex-1">
-                      <div className={selectedApplication.applicationStatus.marketing == "approved" ? `bg-green-400 text-xs leading-none py-1 text-center text-grey-darkest rounded` :
+                      <div className={selectedApplication?.applicationStatus?.marketing == "approved" ? `bg-green-400 text-xs leading-none py-1 text-center text-grey-darkest rounded` :
                         `text-xs leading-none py-1 text-center text-grey-darkest rounded`} style={{ width: "100%" }}></div>
                     </div>
                   </div>
 
                   {/* Compliance */}
                   <div className="flex-1">
-                    <div className={selectedApplication.applicationStatus.compliance == "approved" ? `w-10 h-10 bg-green-600 status-circle mx-auto rounded-full text-lg text-white flex items-center`
-                      : selectedApplication.applicationStatus.compliance == "pending" ? `w-10 h-10 bg-yellow-500 status-circle mx-auto rounded-full text-lg text-white flex items-center` : `w-10 h-10 bg-red-500 status-circle mx-auto rounded-full text-lg text-black flex items-center`}>
+                    <div className={selectedApplication?.applicationStatus?.compliance == "approved" ? `w-10 h-10 bg-green-600 status-circle mx-auto rounded-full text-lg text-white flex items-center`
+                      : selectedApplication?.applicationStatus?.compliance == "pending" ? `w-10 h-10 bg-yellow-500 status-circle mx-auto rounded-full text-lg text-white flex items-center` : `w-10 h-10 bg-red-500 status-circle mx-auto rounded-full text-lg text-black flex items-center`}>
                       <span className="text-gray-700 text-center w-full">3</span>
                     </div>
                   </div>
@@ -110,15 +110,15 @@ const DisplayCard = ({ selectedApplication }) => {
 
                   <div className="w-1/6 align-center items-center align-middle content-center flex">
                     <div className="w-full bg-gray-400 rounded items-center align-middle align-center flex-1">
-                      <div className={selectedApplication.applicationStatus.compliance == "approved" ? `bg-green-400 text-xs leading-none py-1 text-center text-grey-darkest rounded` :
+                      <div className={selectedApplication?.applicationStatus?.compliance == "approved" ? `bg-green-400 text-xs leading-none py-1 text-center text-grey-darkest rounded` :
                         `text-xs leading-none py-1 text-center text-grey-darkest rounded`} style={{ width: "100%" }}></div>
                     </div>
                   </div>
 
                   {/* Business Head */}
                   <div className="flex-1">
-                    <div className={selectedApplication.applicationStatus.businessHead == "approved" ? `w-10 h-10 bg-green-600 status-circle mx-auto rounded-full text-lg text-white flex items-center`
-                      : selectedApplication.applicationStatus.businessHead == "pending" ? `w-10 h-10 bg-yellow-500 status-circle mx-auto rounded-full text-lg text-white flex items-center`
+                    <div className={selectedApplication?.applicationStatus?.businessHead == "approved" ? `w-10 h-10 bg-green-600 status-circle mx-auto rounded-full text-lg text-white flex items-center`
+                      : selectedApplication?.applicationStatus?.businessHead == "pending" ? `w-10 h-10 bg-yellow-500 status-circle mx-auto rounded-full text-lg text-white flex items-center`
                         : `w-10 h-10 bg-red-500 status-circle mx-auto rounded-full text-lg text-black flex items-center`}>
                       <span className="text-black text-center w-full">4</span>
                     </div>

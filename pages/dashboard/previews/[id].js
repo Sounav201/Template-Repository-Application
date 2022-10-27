@@ -8,15 +8,17 @@ import { useReactToPrint } from 'react-to-print';
 import { render } from 'react-dom';
 import axios from 'axios';
 
+
 const Preview = ({data}) => {
     // PDF CODE
     const componentRef = useRef(); // null 
     const handlePrint = useReactToPrint({
       content: () => componentRef.current,
     });
-    const application = data.application[0];
-    const approvalType = application.approvaltype;
-
+     const application = data.application;
+     console.log("Application : ", application)
+     const approvalType = application.approvaltype;
+    //console.log('DATA : ',data)
     const [previewapplicationBody, setpreviewapplicationBody] = useState(null);
     const router = useRouter();
     const {user,userEmail} =useContext(AppContext);
@@ -39,7 +41,7 @@ const Preview = ({data}) => {
   return (
     <div className='bg-[#2E0C6D] h-full pb-12'>
         
-        <LeftSidebar activeTab={"create"} />
+        <LeftSidebar activeTab={"home"} />
     <div className="ml-auto mb-6 lg:w-[75%] xl:w-[80%] 2xl:w-[85%]">
     <div className="px-6 pt-6 2xl:container bg-[#2E0C6D] h-full">
 
@@ -67,11 +69,32 @@ const Preview = ({data}) => {
   )
 }
 
+export const getStaticPaths = async () => {
+  var APIendpoint;
+  if (process.env.NODE_ENV === 'development') {
+      APIendpoint = 'http://localhost:3000/api/fetchApplication'
+  }
+  else if(process.env.NODE_ENV === 'production'){
+      APIendpoint = 'https://templaterepo.vercel.app/api/fetchApplication';
+  }
+  const res = await fetch(APIendpoint);
+  const data = await res.json();
+  const paths = data.applications.map((application) => {
+      return {
+          params: { id: application.appid.toString() }
+      }
+  })
+  return{
+      paths,
+      fallback:false
+  }
 
-export async function getServerSideProps(context) {
- // const data ={route:context.req.headers.referer}
-  const routeArray = context.req.headers.referer.split("/");
-  const appID = routeArray[routeArray.length-1];
+
+}
+export async function getStaticProps(context) {
+//  console.log("Context params : ", context.params.id)
+  const appID = context.params.id;
+  
   var APIendpoint;
   if (process.env.NODE_ENV === 'development') {
       APIendpoint = 'http://localhost:3000/api/fetchApplicationwithID'
@@ -80,14 +103,11 @@ export async function getServerSideProps(context) {
       APIendpoint = 'https://templaterepo.vercel.app/api/fetchApplicationwithID';
   }
 
- // let res =  await axios.get(APIendpoint);
-//  let data = await res.data;
-
-
   let response = await axios.post(APIendpoint, {
     appID: appID,
   });
   let data = await response.data;
+  console.log("Data : ",data)
   return{
     props:{data}
   }
