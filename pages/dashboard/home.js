@@ -157,7 +157,7 @@ export async function getServerSideProps(context) {
     })
 
     //console.log("Application Data 2 : " ,applicationList)
-    console.log("Environment : ",process.env.NODE_ENV)
+   // console.log("Environment : ",process.env.NODE_ENV)
     
     data["applicationsList"] = applicationList
     return {
