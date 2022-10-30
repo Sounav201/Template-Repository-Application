@@ -134,6 +134,8 @@ export async function getServerSideProps(context) {
             return "Compliance";
         if(approvalType == 4)
             return "Business Head";
+        if(approvalType >4)
+            return "None";
         
     }
 
@@ -158,8 +160,11 @@ export async function getServerSideProps(context) {
 
     //console.log("Application Data 2 : " ,applicationList)
    // console.log("Environment : ",process.env.NODE_ENV)
+
     
     data["applicationsList"] = applicationList
+    //console.log(data);
+   
     return {
       props: {data}, // will be passed to the page component as props
     }

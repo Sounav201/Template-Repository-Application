@@ -13,7 +13,7 @@ const DisplayCard = ({ selectedApplication }) => {
       //  console.log('Setter runs!');
       const applicationBody = selectedApplication.appbody;
 
-      localStorage.setItem("applicationBody", JSON.stringify(applicationBody));
+      //localStorage.setItem("applicationBody", JSON.stringify(applicationBody));
       router.push(`previews/${selectedApplication.appid}`);
     }
   }

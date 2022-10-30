@@ -53,10 +53,14 @@ const Preview = () => {
           'Your application has been sent for review!',
           'success'
         );
-        localStorage.removeItem("applicationBody");
-        localStorage.removeItem("applicationVariables");
-        localStorage.removeItem("applicationLanguage");
-      router.push('/dashboard/home');
+        if(localStorage.getItem("applicationBody"))
+            localStorage.removeItem("applicationBody");
+        if(localStorage.getItem("applicationVariables"))
+            localStorage.removeItem("applicationVariables");
+        if(localStorage.getItem("applicationLanguage"))
+            localStorage.removeItem("applicationLanguage");
+
+        router.push('/dashboard/home');
       }
 
     }
