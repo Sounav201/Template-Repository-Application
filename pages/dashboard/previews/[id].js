@@ -141,7 +141,7 @@ const Preview = ({ data }) => {
               throw new Error(response.statusText)
             }
             console.log('Response from rejection api : ', response)
-            return response.json()
+            return response.json();
           })
           .catch(error => {
             Swal.showValidationMessage(
@@ -157,8 +157,9 @@ const Preview = ({ data }) => {
           position:"top-right",
           isClosable: true,
           duration:4000,
-        })
+        });
 
+        router.push('/dashboard/home');
       }
     })
   }

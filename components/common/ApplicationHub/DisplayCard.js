@@ -43,8 +43,7 @@ const DisplayCard = ({ selectedApplication }) => {
             <label className=''>Status : </label>
             {selectedApplication.statusSummary == "Approved" && <span className='text-green-500 font-semibold cursor-pointer'>Application Approved</span>}
             {selectedApplication.statusSummary == "Pending" && <span className='text-yellow-500 font-semibold cursor-pointer '>{`Pending approval from ${selectedApplication.departmentBlocked}`}</span>}
-
-            {/* <span className='text-black font-bold '>Pending approval from Compliance</span> */}
+            {selectedApplication.statusSummary == "Rejected" && <span className='text-red-500 font-semibold cursor-pointer'>{`Application Rejected by ${selectedApplication.departmentBlocked}`}</span>}
             <div className=' rounded-md shadow-md   '>
               {/* {displayTeams.map((team, index) => (
                         <div key={index} className={index == 0 ? `status-item first` : index >0 && index<2 ? `status-item second  `: `status-item pending  ` }>
@@ -103,7 +102,7 @@ const DisplayCard = ({ selectedApplication }) => {
                   <div className="flex-1">
                     <div className={selectedApplication?.applicationStatus?.compliance == "approved" ? `w-10 h-10 bg-green-600 status-circle mx-auto rounded-full text-lg text-white flex items-center`
                       : selectedApplication?.applicationStatus?.compliance == "pending" ? `w-10 h-10 bg-yellow-500 status-circle mx-auto rounded-full text-lg text-white flex items-center` : `w-10 h-10 bg-red-500 status-circle mx-auto rounded-full text-lg text-black flex items-center`}>
-                      <span className="text-gray-700 text-center w-full">3</span>
+                      <span className="text-white text-center w-full">3</span>
                     </div>
                   </div>
 
@@ -120,7 +119,7 @@ const DisplayCard = ({ selectedApplication }) => {
                     <div className={selectedApplication?.applicationStatus?.businessHead == "approved" ? `w-10 h-10 bg-green-600 status-circle mx-auto rounded-full text-lg text-white flex items-center`
                       : selectedApplication?.applicationStatus?.businessHead == "pending" ? `w-10 h-10 bg-yellow-500 status-circle mx-auto rounded-full text-lg text-white flex items-center`
                         : `w-10 h-10 bg-red-500 status-circle mx-auto rounded-full text-lg text-black flex items-center`}>
-                      <span className="text-black text-center w-full">4</span>
+                      <span className="text-white text-center w-full">4</span>
                     </div>
                   </div>
 

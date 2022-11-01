@@ -11,14 +11,8 @@ const ApplicationHub = () => {
   const {user,setuser,userEmail, setuserEmail,applications, setapplications} = useContext(AppContext)
   console.log("Applications: ",applications)
 
-  const applicationList =[
-  {id:1,name:"Loan Agreement 1", applicationID:"LOAN-1234", createdAt:"2022-08-11", statusSummary:"Pending", departmentBlocked:"Marketing", applicationStatus : {legal:'approved',marketing:'pending',compliance:'onhold',businessHead:'onhold'}}, 
-  {id:2,name:"Sanction Letter", applicationID:"SANCTION-734", createdAt:"2022-08-21", statusSummary:"Pending", departmentBlocked:"Compliance", applicationStatus : {legal:'approved',marketing:'approved',compliance:'pending',businessHead:'onhold'}},  
-  {id:3,name:"Legal Notice 1", applicationID:"LEGAL-694", createdAt:"2022-03-04", statusSummary:"Pending", departmentBlocked:"Compliance", applicationStatus : {legal:'approved',marketing:'approved',compliance:'pending',businessHead:'onhold'}},  
-  {id:4,name:"Loan Agreement 2", applicationID:"LOAN-46", createdAt:"2022-10-10", statusSummary:"Approved", departmentBlocked:"None", applicationStatus : {legal:'approved',marketing:'approved',compliance:'approved',businessHead:'approved'}}, 
-  {id:5,name:"TDS Certificate", applicationID:"TDS-13301", createdAt:"2022-03-17", statusSummary:"Pending", departmentBlocked:"Legal", applicationStatus : {legal:'pending',marketing:'onhold',compliance:'onhold',businessHead:'onhold'}}  ]
-
  const [selectedApplication, setselectedApplication] = useState(applications!=undefined && applications.length>0 ?  applications[0]: null)
+ 
 
 
  const handleSelection = (ID) => {
@@ -30,17 +24,38 @@ const ApplicationHub = () => {
 
 
 
+
 useEffect(() => {
   console.log('Selected Application : ', selectedApplication);
 }, [selectedApplication]);
 
 useEffect(() => {
-  if(selectedApplication == null && applicationList.length>0)
+  if(selectedApplication == null &&applications.length>0)
   {
-    setselectedApplication(applications[0])
+    const candidateApplication = applications[0].rejectionStatus ? applications[1] : applications[0];
+    setselectedApplication(candidateApplication)
+  }
+  function removeRejectionApplication()
+  {
+    const index = applications.findIndex((item) => item.rejectionstatus);
+    //console.log(index)
+    if(index!=-1)
+    {
+      const newApplications = [...applications];
+      newApplications.splice(index,1);
+  //    console.log("new application list without rejected one : ", newApplications)
+      setapplications(newApplications);
+    }
+  }
+
+  if(user.includes("Approver") && applications.length>0)
+  {
+    removeRejectionApplication();
   }
 
 }, [applications])
+
+
 
 
   return (

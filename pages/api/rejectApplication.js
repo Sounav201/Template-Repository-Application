@@ -8,10 +8,9 @@ export default async function handler(req, res) {
     console.log('APP ID : ',appID );
     console.log('Rejection Comments : ', rejectionComments);
     
-  //const query = `UPDATE public.applications SET "approvaltype" = "approvaltype"+ 1 where "appid" = '${appID}' `;
-  //const response = await conn.query(query);
-  //console.log(response);
-  const response =true;
+  const query = `UPDATE public.applications SET "rejectionstatus" = true , "rejectioncomments" = '${rejectionComments}' where "appid" = '${appID}' `;
+  const response = await conn.query(query);
+  console.log(response);
   if (response) {
       res.status(201).json({ message: "ok" });
 

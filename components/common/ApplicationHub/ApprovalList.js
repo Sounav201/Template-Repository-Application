@@ -11,7 +11,7 @@ const ApprovalList = ({ applications }) => {
             const index = applications.findIndex((item) => ID === item.appid);
             if (index != -1) {
                 const applicationBody = applications[index].appbody;
-                localStorage.setItem("applicationBody", JSON.stringify(applicationBody));
+         //       localStorage.setItem("applicationBody", JSON.stringify(applicationBody));
                 router.push(`previews/${applications[index].appid}`);
             }
         }
