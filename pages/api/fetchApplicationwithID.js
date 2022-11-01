@@ -9,7 +9,7 @@ export default async function handler(req, res) {
   const query = `Select * from public.applications where "appid" = '${appID}'`;
 
   const results = await conn.query(query);
-//  console.log(results.rows[0]);
+  console.log(results.rows[0]);
 
   if(results.rowCount>0)
   {

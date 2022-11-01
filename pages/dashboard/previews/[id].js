@@ -28,13 +28,9 @@ const Preview = ({ data }) => {
 
   useEffect(() => {
 
-    if (typeof (window) != undefined) {
-      if (localStorage.getItem("applicationBody")) {
         let previewContent2 = JSON.parse(JSON.stringify(applicationData.appbody));
         setpreviewapplicationBody(previewContent2);
 
-      }
-    }
   }, [applicationData])
 
 
