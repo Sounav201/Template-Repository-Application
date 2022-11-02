@@ -15,6 +15,17 @@ function MyApp({ Component, pageProps }) {
       {
         setuser(localStorage.getItem('role'));
       }
+      
+
+    }
+    if(userEmail.length == 0 || userEmail== null )
+    {
+      //Check if localStorage has a token role
+      if(typeof(window)!= undefined && localStorage.getItem('email'))
+      {
+        setuserEmail(localStorage.getItem('email'));
+      }
+      
 
     }
   }, [])

@@ -7,7 +7,7 @@ import { useContext } from 'react';
 
 const LeftSidebar = ({ activeTab }) => {
 
-    const { user, setuser } = useContext(AppContext);
+    const { user, setuser ,setuserEmail} = useContext(AppContext);
 
     const router = useRouter();
     //Handle logout and delete cookie
@@ -15,11 +15,13 @@ const LeftSidebar = ({ activeTab }) => {
         const params = { key: 'static_key' }
         const result = await axios.post('/api/auth/logout', params);
 
-        //console.log('Response after logging out ', user);
         if (result.status == 200) {
             localStorage.removeItem('token');
             localStorage.removeItem('role');
+            localStorage.removeItem('email');
             setuser("");
+            setuserEmail("");
+            
             router.push("/login");
         }
 
