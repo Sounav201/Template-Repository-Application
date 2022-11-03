@@ -212,6 +212,8 @@ export const getStaticPaths = async () => {
       params: { id: application.appid.toString() }
     }
   })
+
+  console.log("Paths from getStaticPaths: ", paths);
   return {
     paths,
     fallback: false
