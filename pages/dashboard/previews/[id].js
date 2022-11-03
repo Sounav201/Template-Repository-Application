@@ -197,31 +197,31 @@ const Preview = ({ data }) => {
   )
 }
 
-// export const getStaticPaths = async () => {
-//   var APIendpoint;
-//   if (process.env.NODE_ENV === 'development') {
-//     APIendpoint = 'http://localhost:3000/api/fetchApplication'
-//   }
-//   else if (process.env.NODE_ENV === 'production') {
-//     APIendpoint = 'https://templaterepo.vercel.app/api/fetchApplication';
-//   }
-//   const res = await fetch(APIendpoint);
-//   const data = await res.json();
-//   const paths = data.applications.map((application) => {
-//     return {
-//       params: { id: application.appid.toString() }
-//     }
-//   })
+export const getStaticPaths = async () => {
+  var APIendpoint;
+  if (process.env.NODE_ENV === 'development') {
+    APIendpoint = 'http://localhost:3000/api/fetchApplication'
+  }
+  else if (process.env.NODE_ENV === 'production') {
+    APIendpoint = 'https://templaterepo.vercel.app/api/fetchApplication';
+  }
+  const res = await fetch(APIendpoint);
+  const data = await res.json();
+  const paths = data.applications.map((application) => {
+    return {
+      params: { id: application.appid.toString() }
+    }
+  })
 
-//   console.log("Paths from getStaticPaths: ", paths);
-//   return {
-//     paths,
-//     fallback: false
-//   }
+  console.log("Paths from getStaticPaths: ", paths);
+  return {
+    paths,
+    fallback: true
+  }
 
-// }
+}
 
-export async function getServerSideProps(context) {
+export async function getStaticProps(context) {
   const appID = context.params.id;
 
   var APIendpoint;
@@ -236,7 +236,7 @@ export async function getServerSideProps(context) {
     appID: appID,
   });
   let data = await response.data;
-  console.log('In get Serverside props : ', data);
+  console.log('In get Static props : ', data);
   return {
     props: { data }
   }
