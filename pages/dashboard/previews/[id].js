@@ -8,7 +8,7 @@ import { useReactToPrint } from 'react-to-print';
 import { render } from 'react-dom';
 import axios from 'axios';
 import { useToast } from '@chakra-ui/react'
-
+import conn from '../../../utils/db';
 
 const Preview = ({ data }) => {
   const toast = useToast()
@@ -17,8 +17,7 @@ const Preview = ({ data }) => {
   const handlePrint = useReactToPrint({
     content: () => componentRef.current,
   });
-  const application = data.application;
-
+  const application = data;
   const [applicationData, setapplicationData] = useState(Array.isArray(application) ? application.length > 0 && application[0] : application);
   console.log("Application : ", applicationData)
   const approvalType = applicationData.approvaltype;
@@ -223,7 +222,9 @@ const Preview = ({ data }) => {
 
 export async function getServerSideProps(context) {
   const appID = context.params.id;
-
+  const query = `Select appbody from public.applications where "appid" = '${appID}' `;
+  const responseDB = await conn.query(query);
+  console.log(responseDB.rows);
   var APIendpoint;
   if (process.env.NODE_ENV === 'development') {
     APIendpoint = 'http://localhost:3000/api/fetchApplicationwithID'
@@ -232,10 +233,9 @@ export async function getServerSideProps(context) {
     APIendpoint = 'https://templaterepo.vercel.app/api/fetchApplicationwithID';
   }
 
-  let response = await axios.post(APIendpoint, {
-    appID: appID,
-  });
-  let data = await response.data;
+  
+  let rowdata = await responseDB.rows;
+  let data = rowdata[0];
   console.log('In get Serverside props : ', data);
   return {
     props: { data }
