@@ -58,7 +58,7 @@ useEffect(() => {
 
 
   return (
-    <div className='w-full p-1 rounded-lg shadow-lg border-white border-solid border-2'>
+    <div className='w-full p-1 rounded-lg shadow-lg  border-white border-solid border-2'>
         
         {user.includes("Approver") ? <div>
           <ApprovalList applications={applications} />

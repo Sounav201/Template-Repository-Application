@@ -9,6 +9,24 @@ import { render } from 'react-dom';
 import axios from 'axios';
 import { useToast } from '@chakra-ui/react'
 
+const getPaths = async(APIendpoint) => {
+  const res = await fetch(APIendpoint);
+  const data = await res.json();
+console.log('Data in getPaths :',data)
+  
+return data.applications;
+
+
+}
+
+const getPageData = async(APIendpoint,appID) => {
+  let response = await axios.post(APIendpoint, {
+    appID: appID,
+  });
+  let data = await response.data;
+  console.log('Page DATA : ',data);
+  return data;
+}
 
 const Preview = ({ data }) => {
   const toast = useToast()
@@ -54,22 +72,7 @@ const Preview = ({ data }) => {
 
 
   const handleApprove = async () => {
-    // console.log("APP ID: ",applicationData.appid);
-    // if(approveHandler())
-    // {
-    //     Swal.fire(
-    //       'Approved!',
-    //       'This application has been approved from your end.',
-    //       'success'
-    //     )
-    // }
-    // else{
-    //   Swal.fire(
-    //     'Error!',
-    //     'There was an error while approving this application.',
-    //     'error'
-    //   )
-    // }
+    
 
     Swal.fire({
       title: 'Are you sure?',
@@ -107,16 +110,6 @@ const Preview = ({ data }) => {
   }
 
   const handleReject = async () => {
-    //     Swal.fire({
-    //       title: 'Please enter some comments',
-    // input: 'text',
-    // inputAttributes: {
-    //   autocapitalize: 'off'
-    // },
-    // showCancelButton: true,
-    // confirmButtonText: 'Submit',
-    // showLoaderOnConfirm: true,
-    //     })
 
     Swal.fire({
       title: 'Please enter some comments',
@@ -205,9 +198,9 @@ export const getStaticPaths = async () => {
   else if (process.env.NODE_ENV === 'production') {
     APIendpoint = 'https://templaterepo.vercel.app/api/fetchApplication';
   }
-  const res = await fetch(APIendpoint);
-  const data = await res.json();
-  const paths = data.applications.map((application) => {
+//  const res = await fetch(APIendpoint);
+  const data =  await getPaths(APIendpoint)
+  const paths = data.map((application) => {
     return {
       params: { id: application.appid.toString() }
     }
@@ -216,7 +209,7 @@ export const getStaticPaths = async () => {
   console.log("Paths from getStaticPaths: ", paths);
   return {
     paths,
-    fallback: false
+    fallback: 'blocking'
   }
 
 }
@@ -232,11 +225,12 @@ export async function getStaticProps(context) {
     APIendpoint = 'https://templaterepo.vercel.app/api/fetchApplicationwithID';
   }
 
-  let response = await axios.post(APIendpoint, {
-    appID: appID,
-  });
-  let data = await response.data;
-  console.log('In get Static props : ', data);
+  // let response = await axios.post(APIendpoint, {
+  //   appID: appID,
+  // });
+  let data = await getPageData(APIendpoint, appID);
+  //console.log('In get Static props : ', data);
+  
   return {
     props: { data }
   }
