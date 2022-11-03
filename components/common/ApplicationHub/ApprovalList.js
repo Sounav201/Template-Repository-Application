@@ -20,7 +20,7 @@ const ApprovalList = ({ applications }) => {
     return (
         <div className='bg-[#665CF5] p-1 h-full rounded-l-lg'>
             <div className='w-5/6  mx-auto'>
-                {applications.map((application, index) => (
+                {applications.length > 0 ? applications.map((application, index) => (
                     <div key={index} className='grid grid-cols-6 gap-2 rounded-md bg-gray-200 my-3 p-2'>
                         <div className='col-span-4 transition duration-200 cursor-pointer   hover:scale-105'>
                             <p className='font-semibold text-black text-center text-xl'>{application.applicationtype} - {application.appid}</p>
@@ -30,7 +30,7 @@ const ApprovalList = ({ applications }) => {
                         </div>
 
                     </div>
-                ))}
+                )) : <p className='text-white text-center'>No Applications</p>}
             </div>
         </div>
     )

@@ -22,7 +22,7 @@ const Preview = () => {
           if(localStorage.getItem("applicationBody"))
           {
             let previewContent = JSON.parse(localStorage.getItem("applicationBody"));
-            console.log('Preview : ', previewContent , typeof(previewContent));
+            //console.log('Preview : ', previewContent , typeof(previewContent));
             setpreviewapplicationBody(JSON.parse(localStorage.getItem("applicationBody")));
             
           }
@@ -32,11 +32,11 @@ const Preview = () => {
     const Sendapplicationhandler =  async () => {
       //email, appbody, apptype, tempid, userRole
       //TO DO : Need to delete the local storage variables post successful submission -> applicationBody, applicationVariables, applicationLanguage
-      const email = userEmail || "";
+      const email = userEmail ;
       const appbody = previewapplicationBody;
       const apptype = "Sanction Letter";
       const tempid = "1";
-      const userRole = user || "";
+      const userRole = user ;
       const res = await fetch('/api/createApplication', {
         method: 'POST',
         headers: {

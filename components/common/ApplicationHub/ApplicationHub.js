@@ -9,7 +9,6 @@ import ApprovalList from './ApprovalList'
 const ApplicationHub = () => {
 
   const {user,setuser,userEmail, setuserEmail,applications, setapplications} = useContext(AppContext)
-  console.log("Applications: ",applications)
 
  const [selectedApplication, setselectedApplication] = useState(applications!=undefined && applications.length>0 ?  applications[0]: null)
  

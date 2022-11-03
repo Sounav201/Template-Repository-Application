@@ -30,10 +30,10 @@ export default async function handler(req, res) {
   const query2 = `Select * from public.applications where "appid" = '${appID}'`;
   const response = await conn.query(query);
   const response2 = await conn.query(query2);
-  console.log(response);
+  console.log("Response from approve Application API : ",response);
   if (response) {
-    console.log(response2.email);
-    sendMail();
+    console.log("Executor email : ",response2.email);
+    //sendMail();
     res.status(201).json({ message: "ok" });
 
   }

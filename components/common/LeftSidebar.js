@@ -16,13 +16,13 @@ const LeftSidebar = ({ activeTab }) => {
         const result = await axios.post('/api/auth/logout', params);
 
         if (result.status == 200) {
+            router.push("/login");
             localStorage.removeItem('token');
             localStorage.removeItem('role');
             localStorage.removeItem('email');
             setuser("");
             setuserEmail("");
             
-            router.push("/login");
         }
 
     }
@@ -36,7 +36,6 @@ const LeftSidebar = ({ activeTab }) => {
                     <a href="#" title="home" className='cursor-pointer flex justify-center items-center outline-none'>
                         {/* <Image src="/ticketifiedlogo.png" className="w-32 object-fit" alt="tailus logo" height={50} width={50} />*/}     
                         <img src="/tvslogo.png" className="w-32 object-fit" alt="tvs logo" height={50} width={50} />
-                        {/* <p className='text-3xl text-white hover:text-gray-200  font-bold text-center'>TVS</p> */}
                     </a>
                 </div>
 

@@ -220,7 +220,6 @@ export const getStaticPaths = async () => {
 
 }
 export async function getStaticProps(context) {
-  //  console.log("Context params : ", context.params.id)
   const appID = context.params.id;
 
   var APIendpoint;
@@ -235,7 +234,6 @@ export async function getStaticProps(context) {
     appID: appID,
   });
   let data = await response.data;
-  //console.log("Data : ",data)
   return {
     props: { data }
   }

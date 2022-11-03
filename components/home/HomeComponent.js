@@ -6,7 +6,7 @@ import AppContext from '../../AppContext';
 import axios from 'axios';
 
 const HomeComponent = () => {
-    const {user,setapplications} = useContext(AppContext);
+    const {user,setapplications,applications} = useContext(AppContext);
 
     useEffect(() => {
         async function getApplications(approverID)
@@ -44,7 +44,6 @@ const HomeComponent = () => {
         if(approverID>0)
         {
             //Make API Call to get all the applications for the concerned Approver
-         console.log('Making API Call ')
             getApplications(approverID);
         }
 

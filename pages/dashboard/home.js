@@ -157,7 +157,6 @@ export async function getServerSideProps(context) {
         applicationRow["applicationStatus"] = buildApplicationStatus(item.approvaltype,item.rejectionstatus);
         applicationRow["departmentBlocked"] = getDepartmentBlocked(item.approvaltype);
         applicationRow["statusSummary"] = item.rejectionstatus ? "Rejected" : item.approvaltype <5 ?  "Pending" :  "Approved";
-        console.log(applicationRow);
         applicationList.push(applicationRow);
 
     })
