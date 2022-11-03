@@ -2,6 +2,7 @@ import { Button } from '@chakra-ui/react'
 import React from 'react'
 import dayjs from 'dayjs'
 import Router, { useRouter } from 'next/router'
+import Link from 'next/link'
 
 const DisplayCard = ({ selectedApplication }) => {
   const router = useRouter();
@@ -14,7 +15,7 @@ const DisplayCard = ({ selectedApplication }) => {
       const applicationBody = selectedApplication.appbody;
 
       //localStorage.setItem("applicationBody", JSON.stringify(applicationBody));
-      router.push(`previews/${selectedApplication.appid}`);
+      //router.push(`previews/${selectedApplication.appid}`);
     }
   }
   if (selectedApplication != null || selectedApplication!= undefined) {
@@ -153,7 +154,10 @@ const DisplayCard = ({ selectedApplication }) => {
           </div>
 
           <div className='flex items-center justify-end p-2'>
-            <Button colorScheme='red' variant='solid' onClick={handlePreviewClick}>Preview</Button>
+        
+          <Link children href={`previews/${selectedApplication.appid}`} as={`previews/${selectedApplication.appid}`}>       
+          <Button colorScheme='red' variant='solid' onClick={handlePreviewClick}>Preview</Button>
+          </Link>
           </div>
 
         </div>
