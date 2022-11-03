@@ -27,7 +27,7 @@ const ApprovalList = ({ applications }) => {
                             <p className='font-semibold text-black text-center text-xl'>{application.applicationtype} - {application.appid}</p>
                         </div>
                         <div className='mx-auto col-span-2'>
-                         <Link children href={`previews/[id]`} as={`previews/${application.appid}`}>   
+                         <Link  href={`previews/[id]`} as={`previews/${application.appid}`}>   
                          <Button colorScheme='red' size={"sm"} variant='solid' onClick={() => handlePreviewClick(application.appid)}>Preview</Button>
                          </Link>
                         </div>

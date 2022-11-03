@@ -155,7 +155,7 @@ const DisplayCard = ({ selectedApplication }) => {
 
           <div className='flex items-center justify-end p-2'>
         
-          <Link children href={`previews/[id]`} as={`previews/${selectedApplication.appid}`}>       
+          <Link  href={`previews/[id]`} as={`previews/${selectedApplication.appid}`}>       
           <Button colorScheme='red' variant='solid' onClick={handlePreviewClick}>Preview</Button>
           </Link>
           </div>
