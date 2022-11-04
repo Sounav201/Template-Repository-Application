@@ -1,45 +1,40 @@
 // Next.js API route support: https://nextjs.org/docs/api-routes/introduction
 
 import conn from "../../utils/db"
-import transporter from "../../utils/nodemailerConfig";
+const sgMail = require("@sendgrid/mail")
+sgMail.setApiKey(process.env.SENDGRID_KEY)
 
-
-function sendMail() {
-  let mailOptions = {
-    from: 'nabarunkar01@gmail.com', // TODO: email sender
-    to: 'sounav2001saha@gmail.com', // TODO: email receiver, supports multiple addresses
-    subject: 'Nodemailer - Test',
-    text: 'This is an Alert!!!'
-  };
-  transporter.sendMail(mailOptions, (err, data) => {
-    if (err) {
-        console.log('Error occurs: ', err);
-    }
-    else {
-        console.log('Email sent!!!');
-    }
-  });
+const sendEmail = (emailRec, appID) => {
+  const msgConfig = {
+      to: emailRec,
+      from: "nabarunkar01@gmail.com",
+      subject: "Confirmation of Application Approval",
+      text: `Your application having ID ${appID} has been fully approved.`
+  }
+  sgMail.send(msgConfig)
+  .then((res) => {
+      console.log("Email Sent to: ", msgConfig.to)
+  })
+  .catch((err) => {
+      console.log(err)
+  })
 }
-
 
 export default async function handler(req, res) {
   try {
-    const {appID} = req.body;
+    const {appID, email, approvalType} = req.body;
     console.log('APP ID : ',appID)
   const query = `UPDATE public.applications SET "approvaltype" = "approvaltype"+ 1 where "appid" = '${appID}' `;
-  const query2 = `Select * from public.applications where "appid" = '${appID}'`;
   const response = await conn.query(query);
-  const response2 = await conn.query(query2);
   console.log("Response from approve Application API : ",response);
   if (response) {
-    console.log("Executor email : ",response2.email);
-    //sendMail();
-    res.status(201).json({ message: "ok" });
-
+    if (approvalType == 4) {
+    sendEmail(email, appID);
+    }
+  res.status(201).json({ message: "ok" });
   }
 else{
     res.status(201).json({ message: "No application found with particular ID" });
-  
   }
  
   } catch (error) {

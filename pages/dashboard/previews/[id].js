@@ -8,6 +8,8 @@ import { useReactToPrint } from 'react-to-print';
 import { render } from 'react-dom';
 import axios from 'axios';
 import { useToast } from '@chakra-ui/react'
+import jsPDF from 'jspdf';
+
 
 const getPaths = async(APIendpoint) => {
   const res = await fetch(APIendpoint);
@@ -35,6 +37,45 @@ const Preview = ({ data }) => {
   const handlePrint = useReactToPrint({
     content: () => componentRef.current,
   });
+  const generatePDF = async ()=> {
+    var doc = new jsPDF('p','pt','a4');
+    var docblob = '';
+    let srcWidth = document.getElementById('tomail').scrollWidth;
+    doc.html(document.getElementById('tomail'), {
+      x: 18,
+      y: 18,
+      html2canvas: {
+          scale: (595.28 - 18 * 2) / srcWidth,
+      },
+      callback: async function () {
+
+          docblob = doc.output('blob');
+          console.log(docblob, typeof(docblob));
+          function blobToBase64(blob) {
+            return new Promise((resolve, _) => {
+              const reader = new FileReader();
+              reader.onloadend = () => resolve(reader.result);
+              reader.readAsDataURL(blob);
+            });
+          }
+          let attachments = await blobToBase64(docblob)
+          console.log(attachments.substring(28))
+          let response = await axios.post("/api/sendgridEmail", {
+            docblob: attachments.substring(28),
+          });
+          let data = await response.data;
+          console.log('Data from Sendgrid', data);
+          window.open(doc.output('bloburl'));
+      }
+  });
+  
+
+  // send email
+  // let attachments = fs.readFileSync(doc).toString("base64")
+
+  
+};
+
   const application = data.application;
 
   const [applicationData, setapplicationData] = useState(Array.isArray(application) ? application.length > 0 && application[0] : application);
@@ -58,7 +99,7 @@ const Preview = ({ data }) => {
       headers: {
         'Content-Type': 'application/json'
       },
-      body: JSON.stringify({ appID: applicationData.appid })
+      body: JSON.stringify({ appID: applicationData.appid, email: applicationData.email, approvalType: applicationData.approvaltype})
     })
     //console.log(response)
     const data = response.json();
@@ -170,7 +211,7 @@ const Preview = ({ data }) => {
           {user === "Executor" &&
             <div className='p-1 flex items-center justify-between my-4  w-5/6 mx-auto '>
               <Button colorScheme="red" onClick={() => router.back()} >Go Back</Button>
-              {approvalType && approvalType > 4 && <Button colorScheme="whatsapp" onClick={handlePrint}>Print</Button>}
+              {approvalType && approvalType > 4 && <Button colorScheme="whatsapp" onClick={generatePDF}>Print</Button>}
 
             </div>}
           {user.includes("Approver") && <div className='p-1 flex items-center justify-between my-4  w-5/6 mx-auto '>
@@ -181,7 +222,7 @@ const Preview = ({ data }) => {
 
           </div>}
 
-          {previewapplicationBody && <div ref={componentRef} className='   w-5/6 mx-auto p-1 mb-12' dangerouslySetInnerHTML={{ __html: previewapplicationBody }}></div>}
+          {previewapplicationBody && <div ref={componentRef} id='tomail' className='   w-5/6 mx-auto p-1 mb-12' dangerouslySetInnerHTML={{ __html: previewapplicationBody }}></div>}
 
         </div>
       </div>

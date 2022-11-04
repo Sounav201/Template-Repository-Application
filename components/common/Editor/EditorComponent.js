@@ -1,11 +1,10 @@
 import { Button, Select } from '@chakra-ui/react';
 import React from 'react'
 
+
 const EditorComponent = ({ variables, handleSelection, applicationRef, handleRef, handleLanguageSelection, language }) => {
 
     let index = 0;
-
-
 
     return (
         <div className='w-11/12 mx-auto mb-6'>
@@ -22,7 +21,7 @@ const EditorComponent = ({ variables, handleSelection, applicationRef, handleRef
 
 
             {language === 'en' &&
-                <div className='shadow-md rounded-md px-2 p-2 bg-white ' ref={applicationRef}>
+                <div className='shadow-md rounded-md px-2 p-2 bg-white ' ref={applicationRef} id="tomail">
                     <div className='w-full '>
                         <img src="/tvslogo_2.png" className="w-52 object-fit" alt="tvs logo" height={50} width={50} />
                     </div>
@@ -189,7 +188,7 @@ const EditorComponent = ({ variables, handleSelection, applicationRef, handleRef
 
                     </div>
 
-
+    
                 </div>
             }
             {language === 'bn' && <div className='shadow-md rounded-md px-2 p-2 bg-white ' ref={applicationRef}>
