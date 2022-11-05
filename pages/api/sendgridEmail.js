@@ -9,10 +9,10 @@ sgMail.setApiKey(process.env.SENDGRID_KEY)
 
 export default async function handler(req, res) {
   try {
-    const {docblob} = req.body
+    const {docblob,emailRec} = req.body
     const sendEmail = (docblob) => {
         const msgConfig = {
-            to: "crush3d0re0s@gmail.com",
+            to: emailRec,
             from: "nabarunkar01@gmail.com",
             subject: "IMPORTANT - TVS CREDIT",
             text: "Please find attached the following document from TVS Credit",

@@ -45,6 +45,7 @@ const DisplayCard = ({ selectedApplication }) => {
             {selectedApplication.statusSummary == "Approved" && <span className='text-green-500 font-semibold cursor-pointer'>Application Approved</span>}
             {selectedApplication.statusSummary == "Pending" && <span className='text-yellow-500 font-semibold cursor-pointer '>{`Pending approval from ${selectedApplication.departmentBlocked}`}</span>}
             {selectedApplication.statusSummary == "Rejected" && <span className='text-red-500 font-semibold cursor-pointer'>{`Application Rejected by ${selectedApplication.departmentBlocked}`}</span>}
+            {selectedApplication.statusSummary == "Rejected" && <p className='text-lg font-semibold'>Comments : {selectedApplication.rejectioncomments}</p>}
             <div className=' rounded-md shadow-md   '>
               {/* {displayTeams.map((team, index) => (
                         <div key={index} className={index == 0 ? `status-item first` : index >0 && index<2 ? `status-item second  `: `status-item pending  ` }>
