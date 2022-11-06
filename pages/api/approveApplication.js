@@ -18,7 +18,7 @@ const sendEmail = (emailRec, appID) => {
   };
   sgMail.send(mailOptions)
   .then((res) => {
-      console.log("Email Sent to: ", msgConfig.to)
+      console.log("Email Sent to: ", mailOptions.to)
   })
   .catch((err) => {
       console.log(err)
