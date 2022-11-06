@@ -13,7 +13,7 @@ export default async function handler(req, res) {
     const sendEmail = (docblob) => {
         const msgConfig = {
             to: emailRec,
-            from: "nabarunkar01@gmail.com",
+            from: process.env.SENDER_EMAIL,
             subject: "IMPORTANT - TVS CREDIT",
             text: "Please find attached the following document from TVS Credit",
             attachments: [

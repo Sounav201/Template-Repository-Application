@@ -4,8 +4,8 @@ const nodemailer = require('nodemailer');
 const transporter = nodemailer.createTransport({
     service: 'gmail',
     auth: {
-        user: 'nabarunkar01@gmail.com', //  your gmail account
-        pass: 'abetqasaszauvfww' //  APP PASSWORD, only works when 2FA on your account is enabled.
+        user: 'mail@gmail.com', //  your gmail account
+        pass: 'appPassword' //  APP PASSWORD, only works when 2FA on your account is enabled.
     }
 });
 

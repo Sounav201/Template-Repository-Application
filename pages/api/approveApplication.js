@@ -5,13 +5,18 @@ const sgMail = require("@sendgrid/mail")
 sgMail.setApiKey(process.env.SENDGRID_KEY)
 
 const sendEmail = (emailRec, appID) => {
-  const msgConfig = {
-      to: emailRec,
-      from: "nabarunkar01@gmail.com",
-      subject: "Confirmation of Application Approval",
-      text: `Your application having ID ${appID} has been fully approved.`
-  }
-  sgMail.send(msgConfig)
+  const mailOptions = {
+    to: emailRec,
+    from: {
+      email: process.env.SENDER_EMAIL,
+      name: "TVS Credit - Approval Team",
+    },
+    templateId: 'd-d4d558307c0c4083a845f6b0a5c90bc9',
+    dynamic_template_data: {
+      AppID: appID, // in Sendgrid -> {{AppID}}
+    },
+  };
+  sgMail.send(mailOptions)
   .then((res) => {
       console.log("Email Sent to: ", msgConfig.to)
   })
