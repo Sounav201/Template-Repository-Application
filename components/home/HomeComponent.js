@@ -12,7 +12,7 @@ const HomeComponent = () => {
         async function getApplications(approverID)
         {
             const response = await axios.post('/api/fetchApplicationforApprover',{approverID:approverID})
-            console.log('Response from server for approver applications : ', response.data.applications);
+            // console.log('Response from server for approver applications : ', response.data.applications);
             if(response.status === 200)
             {
                 setapplications(response.data.applications);

@@ -42,6 +42,8 @@ const getPageData = async (APIendpoint, appID) => {
 }
 
 const Preview = ({ data }) => {
+  if(!data || data == undefined ) return <div className='bg-purple-300 h-screen text-white text-5xl w-11/12 py-16 mx-auto m-auto'>Loading...</div>
+
   const toast = useToast()
   const { isOpen, onOpen, onClose } = useDisclosure();
   const [emailRec, setemailRec] = useState("")
@@ -304,25 +306,20 @@ export const getStaticPaths = async () => {
   else if (process.env.NODE_ENV === 'production') {
     APIendpoint = 'https://templaterepo.vercel.app/api/fetchApplication';
   }
-  //  const res = await fetch(APIendpoint);
   const data = await getPaths(APIendpoint)
   const paths = data.map((application) => {
     return {
       params: { id: application.appid.toString() }
     }
   })
-
-  //console.log("Paths from getStaticPaths: ", paths);
   return {
     paths,
-    fallback: 'blocking'
+    fallback: true
   }
-
 }
 
 export async function getStaticProps(context) {
   const appID = context.params.id;
-
   var APIendpoint;
   if (process.env.NODE_ENV === 'development') {
     APIendpoint = 'http://localhost:3000/api/fetchApplicationwithID'
@@ -331,12 +328,8 @@ export async function getStaticProps(context) {
     APIendpoint = 'https://templaterepo.vercel.app/api/fetchApplicationwithID';
   }
 
-  // let response = await axios.post(APIendpoint, {
-  //   appID: appID,
-  // });
   let data = await getPageData(APIendpoint, appID);
-  //console.log('In get Static props : ', data);
-console.log('Regenerating static props for : ', appID);
+  //console.log('Regenerating static props for : ', appID);
   return {
     props: { data },
     revalidate:1,
