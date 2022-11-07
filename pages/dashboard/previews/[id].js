@@ -336,10 +336,10 @@ export async function getStaticProps(context) {
   // });
   let data = await getPageData(APIendpoint, appID);
   //console.log('In get Static props : ', data);
-
+console.log('Regenerating static props for : ', appID);
   return {
     props: { data },
-    revalidate:5,
+    revalidate:1,
   }
 }
 export default Preview
