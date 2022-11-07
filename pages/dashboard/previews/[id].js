@@ -42,7 +42,6 @@ const getPageData = async (APIendpoint, appID) => {
 }
 
 const Preview = ({ data }) => {
-  if(!data || data == undefined ) return <div className='bg-purple-300 h-screen text-white text-5xl w-11/12 py-16 mx-auto m-auto'>Loading...</div>
 
   const toast = useToast()
   const { isOpen, onOpen, onClose } = useDisclosure();
@@ -105,19 +104,20 @@ const Preview = ({ data }) => {
 
   };
 
-  const application = data.application;
+  const application = data?.application ||{};
 
   const [applicationData, setapplicationData] = useState(Array.isArray(application) ? application.length > 0 && application[0] : application);
   console.log("Application : ", applicationData)
-  const approvalType = applicationData.approvaltype;
+  const approvalType = applicationData?.approvaltype || 1;
   const [previewapplicationBody, setpreviewapplicationBody] = useState(null);
   const router = useRouter();
   const { user, userEmail } = useContext(AppContext);
 
   useEffect(() => {
-
-    let previewContent2 = JSON.parse(JSON.stringify(applicationData.appbody));
-    setpreviewapplicationBody(previewContent2);
+    if (applicationData && (applicationData.appbody != undefined  || applicationData.appbody!=null)) {
+      let previewContent2 = JSON.parse(JSON.stringify(applicationData.appbody));
+      setpreviewapplicationBody(previewContent2);
+      }
 
   }, [applicationData])
 
@@ -238,6 +238,7 @@ const Preview = ({ data }) => {
   //       </div>
   //   )
   // }
+  if(!data || data == undefined ) return <div className='bg-purple-300 h-screen text-white text-5xl w-11/12 py-16 mx-auto m-auto'>Loading...</div>
 
 
 
