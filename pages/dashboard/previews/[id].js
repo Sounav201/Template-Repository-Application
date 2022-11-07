@@ -19,12 +19,13 @@ import {
   ModalBody,
   ModalCloseButton,FormControl,FormLabel,Input
 } from '@chakra-ui/react'
+import { CircularProgress, CircularProgressLabel } from '@chakra-ui/react'
 
 
 const getPaths = async (APIendpoint) => {
   const res = await fetch(APIendpoint);
   const data = await res.json();
-  console.log('Data in getPaths :', data)
+  //console.log('Data in getPaths :', data)
 
   return data.applications;
 
@@ -36,7 +37,7 @@ const getPageData = async (APIendpoint, appID) => {
     appID: appID,
   });
   let data = await response.data;
-  console.log('Page DATA : ', data);
+  //console.log('Page DATA : ', data);
   return data;
 }
 
@@ -224,6 +225,18 @@ const Preview = ({ data }) => {
     })
   }
 
+  // if(router.isFallback)
+  // {
+  //   return (
+  //     <div>
+  //       <h1>Loading...</h1>
+        
+  //       <CircularProgress size={'120px'} isIndeterminate color="green.300" />
+
+  //       </div>
+  //   )
+  // }
+
 
 
   return (
@@ -299,7 +312,7 @@ export const getStaticPaths = async () => {
     }
   })
 
-  console.log("Paths from getStaticPaths: ", paths);
+  //console.log("Paths from getStaticPaths: ", paths);
   return {
     paths,
     fallback: 'blocking'
@@ -325,7 +338,8 @@ export async function getStaticProps(context) {
   //console.log('In get Static props : ', data);
 
   return {
-    props: { data }
+    props: { data },
+    revalidate:5,
   }
 }
 export default Preview
