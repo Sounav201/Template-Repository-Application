@@ -79,11 +79,12 @@ export async function getStaticProps(context) {
   }
 }
 
-const Preview = ({ data }) => {
+export default  function Preview ({ data })  {
 
   const toast = useToast()
   const { isOpen, onOpen, onClose } = useDisclosure();
   const [emailRec, setemailRec] = useState("")
+  //console.log('ehllo')
   
   
   // PDF CODE
@@ -276,8 +277,10 @@ const Preview = ({ data }) => {
   //       </div>
   //   )
   // }
-  if(!data || data == undefined ) return <div className='bg-purple-300 h-screen text-white text-5xl w-11/12 py-16 mx-auto m-auto'>Loading...</div>
-
+  if(!data){ 
+  console.log("No data")
+    return (<div className='bg-purple-300 h-screen text-white text-5xl w-11/12 py-16 mx-auto m-auto'>Loading...</div>)
+  }
 
 
   return (
@@ -337,4 +340,3 @@ const Preview = ({ data }) => {
   )
 }
 
-export default Preview
