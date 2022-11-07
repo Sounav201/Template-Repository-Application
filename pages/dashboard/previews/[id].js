@@ -41,6 +41,44 @@ const getPageData = async (APIendpoint, appID) => {
   return data;
 }
 
+export const getStaticPaths = async () => {
+  var APIendpoint;
+  if (process.env.NODE_ENV === 'development') {
+    APIendpoint = 'http://localhost:3000/api/fetchApplication'
+  }
+  else if (process.env.NODE_ENV === 'production') {
+    APIendpoint = 'https://templaterepo.vercel.app/api/fetchApplication';
+  }
+  const data = await getPaths(APIendpoint)
+  const paths = data.map((application) => {
+    return {
+      params: { id: application.appid.toString() }
+    }
+  })
+  return {
+    paths,
+    fallback: true
+  }
+}
+
+export async function getStaticProps(context) {
+  const appID = context.params.id;
+  var APIendpoint;
+  if (process.env.NODE_ENV === 'development') {
+    APIendpoint = 'http://localhost:3000/api/fetchApplicationwithID'
+  }
+  else if (process.env.NODE_ENV === 'production') {
+    APIendpoint = 'https://templaterepo.vercel.app/api/fetchApplicationwithID';
+  }
+
+  let data = await getPageData(APIendpoint, appID);
+  //console.log('Regenerating static props for : ', appID);
+  return {
+    props: { data },
+    revalidate:1,
+  }
+}
+
 const Preview = ({ data }) => {
 
   const toast = useToast()
@@ -299,41 +337,4 @@ const Preview = ({ data }) => {
   )
 }
 
-export const getStaticPaths = async () => {
-  var APIendpoint;
-  if (process.env.NODE_ENV === 'development') {
-    APIendpoint = 'http://localhost:3000/api/fetchApplication'
-  }
-  else if (process.env.NODE_ENV === 'production') {
-    APIendpoint = 'https://templaterepo.vercel.app/api/fetchApplication';
-  }
-  const data = await getPaths(APIendpoint)
-  const paths = data.map((application) => {
-    return {
-      params: { id: application.appid.toString() }
-    }
-  })
-  return {
-    paths,
-    fallback: true
-  }
-}
-
-export async function getStaticProps(context) {
-  const appID = context.params.id;
-  var APIendpoint;
-  if (process.env.NODE_ENV === 'development') {
-    APIendpoint = 'http://localhost:3000/api/fetchApplicationwithID'
-  }
-  else if (process.env.NODE_ENV === 'production') {
-    APIendpoint = 'https://templaterepo.vercel.app/api/fetchApplicationwithID';
-  }
-
-  let data = await getPageData(APIendpoint, appID);
-  //console.log('Regenerating static props for : ', appID);
-  return {
-    props: { data },
-    revalidate:1,
-  }
-}
 export default Preview
