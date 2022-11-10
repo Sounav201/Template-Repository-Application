@@ -236,7 +236,7 @@ export default  function Preview ({ data })  {
           headers: {
             'Content-Type': 'application/json'
           },
-          body: JSON.stringify({ appID: applicationData.appid, rejectionComments: comments })
+          body: JSON.stringify({ appID: applicationData.appid, rejectionComments: comments, email: applicationData.email})
         })
           .then(response => {
             if (!response.ok) {
