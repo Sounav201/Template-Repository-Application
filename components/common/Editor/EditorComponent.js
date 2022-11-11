@@ -7,7 +7,7 @@ const EditorComponent = ({ variables, handleSelection, applicationRef, handleRef
     let index = 0;
 
     return (
-        <div className='w-11/12 mx-auto mb-6'>
+        <div className='w-full p-2 mx-auto mb-6'>
 
             <div className='w-11/12 mx-auto my-4 flex items-center justify-between px-1'>
                 <div className='xl:w-1/3 lg:w-1/4'>
@@ -25,7 +25,7 @@ const EditorComponent = ({ variables, handleSelection, applicationRef, handleRef
                     <div className='w-full '>
                         <img src="/tvslogo_2.png" className="w-52 object-fit" alt="tvs logo" height={50} width={50} />
                     </div>
-                    <div className='w-full  mx-auto p-1 flex items-center justify-end'>
+                    <div className='w-full  mx-auto px-1 flex items-center justify-end'>
                         <div className='flex flex-col items-center'>
                             <p className='text-lg text-center font-bold'>TVS Credit Services Limited</p>
                             <p className='text-lg text-center font-bold'>Jayalakshmi Estates, Third Floor,</p>
@@ -46,7 +46,7 @@ const EditorComponent = ({ variables, handleSelection, applicationRef, handleRef
                         </div>
                     </div>
                     <div className='mt-4 mb-8'>
-                        <h2 className='text-center text-black text-2xl font-semibold underline font-serif'>Sanction Letter</h2>
+                        <h2 className='text-center text-black text-2xl font-semibold  font-serif'>Sanction Letter</h2>
                     </div>
 
                     <div className='my-2 h-full p-2 text-lg    w-full'>
@@ -54,10 +54,9 @@ const EditorComponent = ({ variables, handleSelection, applicationRef, handleRef
                         <p className='text-black text-left'>Dear Sir/Madam,</p>
                         <p className='text-black text-left'>Sub-Sanction Letter - <span className='hover:font-bold hover:shadow-md p-1  hover:bg-slate-300 duration-300 transition cursor-pointer' onClick={() => handleSelection(variables[index + 2].id)}>{variables[index + 2].data.length === 0 ? <b>{`[${variables[index + 2].name}]`}</b> : <b>{`${variables[index + 2].data}`}</b>}</span> Dealer Copy </p>
                         <br />
-                        <p className='text-black text-left'>We have sanctioned a loan facility for    <span onClick={() => handleSelection(variables[index + 3].id)} className='hover:font-bold hover:shadow-md p-1hover:bg-slate-300 duration-300 transition cursor-pointer'>
+                        <p className='text-black text-left'>We have sanctioned a loan facility for    <span onClick={() => handleSelection(variables[index + 3].id)} className='hover:font-bold hover:shadow-md p-1  hover:bg-slate-300 duration-300 transition cursor-pointer'>
                             {variables[index + 3].data.length === 0 ? <b>{`[${variables[index + 3].name}]`}</b> : <b>{`${variables[index + 3].data}`}</b>}
-                        </span>
-                            for the purchase of item <span onClick={() => handleSelection(variables[index + 4].id)} className='hover:font-bold hover:shadow-md p-1  hover:bg-slate-300 duration-300 transition cursor-pointer'>{variables[index + 4].data.length === 0 ? <b>{`[${variables[index + 4].name}]`}</b> : <b>{`${variables[index + 4].data}`}</b>}</span>.
+                        </span> for the purchase of item <span onClick={() => handleSelection(variables[index + 4].id)} className='hover:font-bold hover:shadow-md p-1  hover:bg-slate-300 duration-300 transition cursor-pointer'>{variables[index + 4].data.length === 0 ? <b>{`[${variables[index + 4].name}]`}</b> : <b>{`${variables[index + 4].data}`}</b>}</span>.
                             Pursuant to the agreement executed by the customer in our favour with respect to the loan facility and on the basis of the instructions of the Customer we are disbursing the following amount in your favour.</p>
                         <br />
                         <p className='text-black text-left'>Kindly arrange the delivery of the product to the customer at the below address only.</p>
@@ -170,6 +169,16 @@ const EditorComponent = ({ variables, handleSelection, applicationRef, handleRef
 
                         <br />
                         <br />
+                        <br />
+                        <br />
+                        <br />
+                        <br />
+                        <br />
+                        <br />
+                        <br />
+
+                        
+                        <div>
                         <p className='text-black text-left font-bold underline'>Terms</p>
                         <p className='text-black text-left'>- Any amount more than the Final Disbursement Amount is to be collected from the customer before release of the Product.</p>
                         <p className='text-black text-left'>- The Final Disbursement Amount would be paid to you on the explicit understanding that any sun payable/refundable by you to the customer, would be paid/refunded by you, only to us, i.e. TVS Credit Services Limited</p>
@@ -185,7 +194,7 @@ const EditorComponent = ({ variables, handleSelection, applicationRef, handleRef
                             {variables[index + 28].data.length === 0 ? <b>{`[${variables[index + 28].name}]`}</b> : <b>{`${variables[index + 28].data}`}</b>}</p>
 
 
-
+                        </div>
                     </div>
 
     
@@ -195,7 +204,7 @@ const EditorComponent = ({ variables, handleSelection, applicationRef, handleRef
                 <div className='w-full '>
                     <img src="/tvslogo_2.png" className="w-52 object-fit" alt="tvs logo" height={50} width={50} />
                 </div>
-                <div className='w-full  mx-auto p-1 flex items-center justify-end'>
+                <div className='w-full  mx-auto px-1 flex items-center justify-end'>
                     <div className='flex flex-col items-center'>
                         <p className='text-lg text-center font-bold'>TVS Credit Services Limited</p>
                         <p className='text-lg text-center font-bold'>Jayalakshmi Estates, Third Floor,</p>
@@ -336,9 +345,17 @@ const EditorComponent = ({ variables, handleSelection, applicationRef, handleRef
                     </table>
 
 
+
                     <br />
-                    <br />
-                    <p className='text-black text-left font-bold underline'>শর্তাবলী</p>
+                        <br />
+                        <br />
+                        <br />
+                        <br />
+                        <br />
+                        <br />
+                        <br />
+                        <br />
+                                            <p className='text-black text-left font-bold underline'>শর্তাবলী</p>
                     <p className='text-black text-left'>- পণ্য প্রকাশের আগে গ্রাহকের কাছ থেকে চূড়ান্ত বিতরণের পরিমাণের চেয়ে বেশি যে কোনো পরিমাণ সংগ্রহ করা হবে।</p>
                     <p className='text-black text-left'>- চূড়ান্ত অর্থ প্রদানের পরিমাণ আপনাকে এই স্পষ্ট বোঝার ভিত্তিতে প্রদান করা হবে যে গ্রাহকের কাছে আপনার দ্বারা প্রদেয়/ফেরতযোগ্য যেকোন সূর্য আপনার দ্বারা অর্থপ্রদান/ফেরত করা হবে, শুধুমাত্র আমাদের - টিভিএস্ ক্রেডিট সার্ভিসেস লিমিটেড</p>
                     <p className='text-black text-left'>- টিভিএস্ ক্রেডিট সার্ভিসেস লিমিটেডে চিহ্নিত HYP সহ চালানের আসল ফিনান্সার কপি, যথাযথভাবে প্রাপ্ত ডেলিভারির অনুলিপি। চালান/চালান/ডেলিভারি রসিদ/মার্জিন মানি রসিদ, স্বাক্ষর প্রুফ অনুযায়ী স্বাক্ষর সহ ACH এবং সমস্ত প্রাসঙ্গিক প্রি-ডিসবারসমেন্ট ডকুমেন্টের স্পষ্ট কপি টিভিএস্ ক্রেডিট সার্ভিসে পাঠাতে হবে, চূড়ান্ত বিতরণের পরিমাণ প্রক্রিয়া করার জন্য। আরও, সাথী অ্যাপটি প্রযোজ্য হিসাবে ইনস্টল করা উচিত।</p>
@@ -505,7 +522,14 @@ const EditorComponent = ({ variables, handleSelection, applicationRef, handleRef
 
 
                     <br />
-                    <br />
+                        <br />
+                        <br />
+                        <br />
+                        <br />
+                        <br />
+                        <br />
+                        <br />
+                        <br />
                     <p className='text-black text-left font-bold underline'>शर्तें</p>
                     <p className='text-black text-left'>- अंतिम संवितरण राशि से अधिक कोई भी राशि उत्पाद के जारी होने से पहले ग्राहक से एकत्र की जानी है।</p>
                     <p className='text-black text-left'>- अंतिम संवितरण राशि का भुगतान आपको इस स्पष्ट समझ पर किया जाएगा कि ग्राहक को आपके द्वारा देय/वापसी योग्य किसी भी राशि का भुगतान/वापसी केवल टीवीएस क्रेडिट सर्विसेज लिमिटेड को किया जाएगा।</p>

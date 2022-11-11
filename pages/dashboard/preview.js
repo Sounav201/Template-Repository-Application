@@ -23,7 +23,7 @@ const Preview = () => {
           {
             let previewContent = JSON.parse(localStorage.getItem("applicationBody"));
             //console.log('Preview : ', previewContent , typeof(previewContent));
-            setpreviewapplicationBody(JSON.parse(localStorage.getItem("applicationBody")));
+            setpreviewapplicationBody(previewContent);
             
           }
         }
@@ -47,10 +47,10 @@ const Preview = () => {
       const data = await res.json();
       //console.log(data);
       if(data.message =="ok")
-      {
+      { const appID = data.appID;
         Swal.fire(
           'Good job!',
-          'Your application has been sent for review!',
+          `Your application having ID ${appID} has been sent for review!`,
           'success'
         );
         if(localStorage.getItem("applicationBody"))

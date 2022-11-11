@@ -24,7 +24,7 @@ export default async function handler(req, res) {
         const response = await conn.query(query);
         //console.log(response);
         if (response) {
-            res.status(201).json({ message: "ok" });
+            res.status(201).json({ message: "ok",appID:appID });
 
         }
         

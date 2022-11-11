@@ -2,6 +2,8 @@ import { Button } from '@chakra-ui/react'
 import React from 'react'
 import {AiOutlinePlus} from 'react-icons/ai'
 import TemplateCard from './TemplateCard'
+import Swal from 'sweetalert2'
+
 const CreateComponent = () => {
     const templates = [{id:1,name:"Sanction Letter",color:"#4077C9"},{id:2,name:"Loan Agreement",color:"#DE4343"}, {id:3,name:"Welcome Letter",color:"#3AB77B"},{id:4,name:"Legal Notice",color:"#E98C1F"} ,{id:5,name:"TDS Certificate" ,color:"#7176EA"}]
   return (
@@ -12,9 +14,9 @@ const CreateComponent = () => {
             
         </div>
         
-        <h4 className='my-6 text-white text-lg font-semibold'>Build a template from scratch with the help of our comprehensive Template Builder</h4>
+        <h4 className='my-6 text-white text-lg font-semibold'>Build an application from scratch with the help of our comprehensive Application Builder</h4>
         
-        <Button leftIcon={<AiOutlinePlus color='white' />} variant='solid' colorScheme={"whatsapp"}>Create</Button>
+        <Button leftIcon={<AiOutlinePlus color='white' />} onClick={() => Swal.fire('Feature still under progress!','We appreciate your patience 😊', 'info')} variant='solid' colorScheme={"whatsapp" }>Create</Button>
         </div>
         <div className='mt-24  mb-2'>
         <h3 className=' my-4 font-semibold text-white text-2xl'>Create applications quickly</h3>

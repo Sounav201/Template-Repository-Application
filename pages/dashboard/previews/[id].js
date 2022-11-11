@@ -1,6 +1,7 @@
 import { Button } from '@chakra-ui/react';
 import React, { useContext, useEffect, useRef, useState } from 'react'
 import LeftSidebar from '../../../components/common/LeftSidebar'
+import CustomPreloader from '../../../components/CustomPreloader'
 import Router, { useRouter } from 'next/router'
 import AppContext from '../../../AppContext';
 import Swal from 'sweetalert2'
@@ -84,7 +85,6 @@ export default  function Preview ({ data })  {
   const toast = useToast()
   const { isOpen, onOpen, onClose } = useDisclosure();
   const [emailRec, setemailRec] = useState("")
-  //console.log('ehllo')
   
   
   // PDF CODE
@@ -279,7 +279,10 @@ export default  function Preview ({ data })  {
   // }
   if(!data){ 
   console.log("No data")
-    return (<div className='bg-purple-300 h-screen text-white text-5xl w-11/12 py-16 mx-auto m-auto'>Loading...</div>)
+    return (
+   
+   <CustomPreloader />
+    )
   }
 
 

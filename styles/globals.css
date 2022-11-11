@@ -146,17 +146,21 @@ a {
 table {
   width: 100%;
   height: 200px;
-  border-collapse: collapse;
+  border-collapse: separate;
+  border-spacing: 2px;
   }
   
   th {
-  border-bottom: 1px solid black;
+  border-bottom: 1px solid gray;
   border: 2px solid black;
   background-color: gainsboro;
+  margin:10px auto;
 }
   
   td {
   text-align: center;
   border: 2px solid black;
+  margin:5px auto;
+  
   }
   
