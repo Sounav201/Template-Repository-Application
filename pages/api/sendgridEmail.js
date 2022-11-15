@@ -10,7 +10,7 @@ sgMail.setApiKey(process.env.SENDGRID_KEY)
 export default async function handler(req, res) {
   try {
     const {docblob,emailRec} = req.body
-    const sendEmail = (docblob) => {
+    const sendEmail = async (docblob) => {
         const msgConfig = {
             to: emailRec,
             from: process.env.SENDER_EMAIL,
@@ -25,7 +25,7 @@ export default async function handler(req, res) {
                 }
             ]
         }
-        sgMail.send(msgConfig)
+       await sgMail.send(msgConfig)
         .then((res) => {
             console.log("Email Sent to: ", msgConfig.to)
         })

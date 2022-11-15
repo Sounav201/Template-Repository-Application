@@ -203,6 +203,7 @@ export default  function Preview ({ data })  {
             'success'
           )
           router.push('/dashboard/home');
+          
         }
         else {
           Swal.fire(

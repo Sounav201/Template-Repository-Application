@@ -117,7 +117,7 @@ const Login = () => {
                   <select className='focus:outline-none rounded-lg bg-slate-700 p-1 text-white ' required={true} onChange={(e) => setRoleSelected(e.target.value)}>
                     <option value={0}>Choose your role</option>
                     <option value={1}>Executor</option>
-                    <option value={2}>Creator</option>
+                    {/* <option value={2}>Creator</option> */}
                     <option value={3}>Legal Approver</option>
                     <option value={4}>Marketing Approver</option>
                     <option value={5}>Compliance Approver</option>

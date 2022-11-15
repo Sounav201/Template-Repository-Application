@@ -7,17 +7,18 @@ import axios from 'axios';
 
 const HomeComponent = () => {
     const {user,setapplications,applications} = useContext(AppContext);
+    async function getApplications(approverID)
+    {
+        const response = await axios.post('/api/fetchApplicationforApprover',{approverID:approverID})
+        // console.log('Response from server for approver applications : ', response.data.applications);
+        if(response.status === 200)
+        {
+            setapplications(response.data.applications);
+        }
+    }
+
 
     useEffect(() => {
-        async function getApplications(approverID)
-        {
-            const response = await axios.post('/api/fetchApplicationforApprover',{approverID:approverID})
-            // console.log('Response from server for approver applications : ', response.data.applications);
-            if(response.status === 200)
-            {
-                setapplications(response.data.applications);
-            }
-        }
         if(user.length > 0  && user.includes("Approver") )
         {
         //Make API Call to get all the applications for the concerned Approver
@@ -52,6 +53,42 @@ const HomeComponent = () => {
 
 
     }, [user])
+    
+    useEffect(() => {
+        if(user.length > 0  && user.includes("Approver") )
+        {
+        //Make API Call to get all the applications for the concerned Approver
+        var approverID = 0;
+        if(user == "Legal Approver")
+        {
+            approverID = 1;
+        }
+        else if(user == "Marketing Approver")
+        {
+            approverID = 2;
+        }
+        else if(user == "Compliance Approver")
+        {
+            approverID = 3;
+
+        }
+        else if(user == "Business Head Approver")
+        {
+            approverID = 4;
+        }
+
+        //Make call
+        if(approverID>0)
+        {
+            //Make API Call to get all the applications for the concerned Approver
+            getApplications(approverID);
+        }
+
+
+        }
+
+    }, [])
+    
     
 
     return (

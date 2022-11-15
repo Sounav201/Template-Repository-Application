@@ -18,6 +18,7 @@ const Home = ({data}) => {
 
     },[user])
     
+    
     return (
     
     <div className='bg-[#2E0C6D] h-screen'>

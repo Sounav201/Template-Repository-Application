@@ -4,7 +4,7 @@ import conn from "../../utils/db"
 const sgMail = require("@sendgrid/mail")
 sgMail.setApiKey(process.env.SENDGRID_KEY)
 
-const sendEmail = (emailRec, appID, comments) => {
+const sendEmail =  async (emailRec, appID, comments) => {
   const mailOptions = {
     to: emailRec,
     from: {
@@ -17,7 +17,7 @@ const sendEmail = (emailRec, appID, comments) => {
       rejCom: comments, // in Sendgrid -> {{rejCom}}
     },
   };
-  sgMail.send(mailOptions)
+ await sgMail.send(mailOptions)
   .then((res) => {
       console.log("Email Sent to: ", mailOptions.to)
   })
