@@ -4,7 +4,7 @@ const List = ({ applications, handleSelection }) => {
     //appid,apptype,createdon,approvaltype,email,rejectionstatus,rejectioncomments,
     console.log("applcations in list : ", applications)
     return (
-        <div className='bg-[#665CF5] p-1  overflow-y-scroll max-h-96 h-full rounded-l-lg'>
+        <div className='bg-[#665CF5] p-1  overflow-y-scroll max-h-96 min-h-[25rem]  h-full rounded-l-lg'>
             <div className='w-5/6  mx-auto'>
                 {applications.map((application, index) => (
                     <div key={application.appid} className='bg-gray-100 my-8 cursor-pointer p-1 rounded-lg hover:bg-gray-300 hover:scale-105 transition duration-300' onClick={() => handleSelection(application.appid)}>
