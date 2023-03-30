@@ -8,7 +8,7 @@ There can be 2 sets of users:
 
 After an application is fully approved, it is ready to be sent out to the customer. The executor can carry out this task from within the software. Upon execution, the customer will receive a copy of the application in pdf format.
 
-SETUP INSTRUCTIONS
+# SETUP INSTRUCTIONS
 
 -   Navigate into directory of choice
 
@@ -26,7 +26,7 @@ SETUP INSTRUCTIONS
 
 -   Open up a browser and navigate to localhost:3000/login
 
-ENVIRONMENT VARIABLES
+### ENVIRONMENT VARIABLES
 
 Create .env.local file in root directory with following values:
 
@@ -38,7 +38,7 @@ SENDGRID_KEY = {API key from sendgrid for sending automated, templatized emails}
 
 SENDER_EMAIL = {email of organisation}
 
-ADDITIONAL INFORMATION
+### ADDITIONAL INFORMATION
 
 -   PostgreSQL has been used as the database for this project
 
