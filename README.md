@@ -1,42 +1,45 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+The goal of this software is to make drafting out applications/letters a seamless task with the help of pre-defined templates and a user-friendly interface.
 
-## Getting Started
+There can be 2 sets of users:
 
-Install dependencies:
+1.  Executors, who can choose from a number of templates made available to them upon logging in and fill in additional details as required. Once done, they can send the final draft for approval.
 
-```bash
-npm i
-# or
-yarn install
-```
+2.  Approvers, who approve applications
 
-Then, run the development server:
+After an application is fully approved, it is ready to be sent out to the customer. The executor can carry out this task from within the software. Upon execution, the customer will receive a copy of the application in pdf format.
 
-```bash
-npm run dev
-# or
-yarn dev
-```
+SETUP INSTRUCTIONS
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+-   Navigate into directory of choice
 
-You can start editing the page by modifying `pages/index.js`. The page auto-updates as you edit the file.
+-   Open Terminal
 
-[API routes](https://nextjs.org/docs/api-routes/introduction) can be accessed on [http://localhost:3000/api/hello](http://localhost:3000/api/hello). This endpoint can be edited in `pages/api/hello.js`.
+-   Type in: 
 
-The `pages/api` directory is mapped to `/api/*`. Files in this directory are treated as [API routes](https://nextjs.org/docs/api-routes/introduction) instead of React pages.
+-   git clone <https://github.com/Sounav201/Template-Repository-Application.git>
 
-## Learn More
+-   cd Template-Repository-Application  
 
-To learn more about Next.js, take a look at the following resources:
+-   npm i  
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+-   Start the local development server with npm run dev
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
+-   Open up a browser and navigate to localhost:3000/login
 
-## Deploy on Vercel
+ENVIRONMENT VARIABLES
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+Create .env.local file in root directory with following values:
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+POSTGRES_URL = {PostgreSQL database}
+
+SECRET = {database secret}
+
+SENDGRID_KEY = {API key from sendgrid for sending automated, templatized emails}
+
+SENDER_EMAIL = {email of organisation}
+
+ADDITIONAL INFORMATION
+
+-   PostgreSQL has been used as the database for this project
+
+-   Sendgrid integration automates the process of sending emails
