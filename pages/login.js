@@ -174,8 +174,8 @@ const Login = () => {
                 <a href="#" className="text-sm  hover:text-gray-300">
                   Contact
                 </a>
-                <a href="#" className="text-sm  hover:text-gray-300">
-                  Privacy & Terms
+                <a href="https://github.com/Sounav201/Template-Repository-Application" className="text-sm  hover:text-gray-300">
+                  Github
                 </a>
               </div>
             </div>
